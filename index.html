@@ -75,6 +75,70 @@
             break-inside: avoid;
             margin-bottom: 2rem;
         }
+        .mobile-menu-btn {
+            width: 30px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: var(--text-main);
+            border-radius: 2px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        .mobile-menu-btn span:nth-child(1) { top: 0; }
+        .mobile-menu-btn span:nth-child(2) { top: 11px; }
+        .mobile-menu-btn span:nth-child(3) { top: 22px; }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            top: 11px;
+            transform: rotate(135deg);
+        }
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+        .mobile-menu-btn.active span:nth-child(3) {
+            top: 11px;
+            transform: rotate(-135deg);
+        }
+        
+        .mobile-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(249, 247, 242, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .mobile-dropdown a {
+            display: block;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+        .mobile-dropdown a:hover {
+            background: var(--accent-red);
+            color: white;
+            padding-left: 2.5rem;
+        }
     </style>
 </head>
 <body>
@@ -88,7 +152,19 @@
             <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
             <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
         </div>
-        <div class="md:hidden text-2xl">☰</div>
+        <div class="md:relative">
+            <div class="mobile-menu-btn md:hidden" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="mobile-dropdown" id="mobileDropdown">
+                <a href="#home" class="hover:text-[var(--accent-red)] transition-colors">首頁</a>
+                <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
+                <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
+                <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -101,20 +177,20 @@
         
         <div class="relative z-10 flex flex-col md:flex-row items-center gap-12 px-6">
             <h1 class="vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter" data-aos="fade-right" data-aos-duration="1500">
-                東甜品，<br><span class="text-[var(--accent-red)]">詩意呈現。</span>
+                東方甜品，<br><span class="text-[var(--accent-red)]">詩意呈現。</span>
             </h1>
             <div class="max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24" data-aos="fade-up" data-aos-delay="500">
-                <p>我們取法自然，以四時之物入饌。<br>每一勺溫潤，都是對東方生活美學的致敬。<br>在繁瑣的日常中，尋得一份純粹的甘甜。</p>
-                <button class="mt-10 px-8 py-3 btn-oriental tracking-widest text-xs uppercase">探索菜單</button>
-            </div>
+                <p>取法自然，以四時之物入饌。<br>東方生活美學<br>在繁瑣的日常中，尋得一份純粹的甘甜。</p>
+                </div>
         </div>
 
         <!-- 裝飾用印章感文字 -->
         <div class="absolute bottom-12 right-12 font-calligraphy text-4xl text-[var(--accent-red)] opacity-40">
-            匠心手工
+            
         </div>
     </section>
 
+    
     <!-- 品牌故事 Section -->
     <section id="story" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- 背景視頻 -->
@@ -137,7 +213,7 @@
             <div class="order-1 md:order-2 space-y-8 text-white" data-aos="fade-left">
                 <h2 class="text-3xl font-serif font-bold border-l-4 border-[var(--accent-red)] pl-6">煦經典</h2>
                 <p class="text-lg leading-loose opacity-90 font-light">
-                    「煦煦木白」不只是一家糖水舖，更是一場關於味覺的復興運動。我們保留了傳統粵式糖水的溫潤靈魂，並融入當代極簡的美學視覺。
+                    「煦煦木白」保留了傳統粵式糖水的溫潤靈魂，並融入當代極簡的美學視覺。
                 </p>
                 <div class="grid grid-cols-2 gap-8 pt-6">
                     <div>
@@ -150,6 +226,27 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- 背景大圖 (建議替換為附圖 7: 寬版情境圖) -->
+        <div class="absolute inset-0 z-0">
+            <img src="resource/master.png" 
+                 class="w-full h-full object-cover opacity-30 scale-105" alt="hero-bg">
+        </div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-12 px-6">
+            <h1 class="vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter" data-aos="fade-right" data-aos-duration="1500">
+                匠心巧思，<br><span class="text-[var(--accent-red)]">經典再現。</span>
+            </h1>
+            <div class="max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24" data-aos="fade-up" data-aos-delay="500">
+               </div>
+        </div>
+
+        <!-- 裝飾用印章感文字 -->
+        <div class="absolute bottom-12 right-12 font-calligraphy text-4xl text-[var(--accent-red)] opacity-40">
+            
         </div>
     </section>
 
@@ -271,7 +368,19 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                // 關閉手機選單
+                document.getElementById('menuToggle').classList.remove('active');
+                document.getElementById('mobileDropdown').classList.remove('active');
             });
+        });
+
+        // 手機選單切換
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileDropdown = document.getElementById('mobileDropdown');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileDropdown.classList.toggle('active');
         });
     </script>
 </body>
