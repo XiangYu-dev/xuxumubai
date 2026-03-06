@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>煦煦木白 | 新精緻甜品</title>
+    
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 引入 AOS 動畫庫 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- 引入 Google Fonts: 標題用襯線體，內文用無襯線體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #F9F7F2;
+            --text-main: #333333;
+            --accent-red: #A62121;
+            --accent-gold: #C5A059;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-serif { font-family: 'Noto Serif TC', serif; }
+        .font-calligraphy { font-family: 'Zhi Mang Xing', cursive; }
+
+        /* 豎排文字樣式 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.5em;
+        }
+
+        /* 導航欄捲動效果 */
+        nav.scrolled {
+            background-color: rgba(249, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 自定義按鈕 hover */
+        .btn-oriental {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid var(--text-main);
+        }
+        .btn-oriental:hover {
+            color: white;
+            background-color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        /* 圖片微縮放效果 */
+        .hover-scale img {
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .hover-scale:hover img {
+            transform: scale(1.08);
+        }
+
+        /* 自定義 Masonry Grid 微調 */
+        .product-card {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 懸浮式導航欄 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center">
+        <img src="resource/logo.jpg" alt="煦煦木白" class="h-12 md:h-16">
+        <div class="hidden md:flex space-x-12 text-sm tracking-widest opacity-80 font-light">
+            <a href="#home" class="hover:text-[var(--accent-red)] transition-colors">首頁</a>
+            <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
+            <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
+            <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
+        </div>
+        <div class="md:hidden text-2xl">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- 背景大圖 (建議替換為附圖 7: 寬版情境圖) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&q=80&w=2000" 
+                 class="w-full h-full object-cover opacity-30 scale-105" alt="hero-bg">
+        </div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-12 px-6">
+            <h1 class="vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter" data-aos="fade-right" data-aos-duration="1500">
+                東方甜品，<br><span class="text-[var(--accent-red)]">詩意呈現。</span>
+            </h1>
+            <div class="max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24" data-aos="fade-up" data-aos-delay="500">
+                <p>我們取法自然，以四時之物入饌。<br>每一勺溫潤，都是對東方生活美學的致敬。<br>在繁瑣的日常中，尋得一份純粹的甘甜。</p>
+                <button class="mt-10 px-8 py-3 btn-oriental tracking-widest text-xs uppercase">探索菜單</button>
+            </div>
+        </div>
+
+        <!-- 裝飾用印章感文字 -->
+        <div class="absolute bottom-12 right-12 font-calligraphy text-4xl text-[var(--accent-red)] opacity-40">
+            匠心手工
+        </div>
+    </section>
+
+    <!-- 品牌故事 Section -->
+    <section id="story" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- 背景視頻 -->
+        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+            <source src="resource/zooTrain.mp4" type="video/mp4">
+        </video>
+        
+        <!-- 半透明遮罩 -->
+        <div class="absolute inset-0 bg-black/50"></div>
+        
+        <!-- 品牌故事內容 -->
+        <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-8 md:px-24 py-32">
+            <div class="order-2 md:order-1 relative" data-aos="fade-up">
+                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="resource/brand.png" class="w-full" alt="story">
+                </div>
+                <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-[var(--accent-gold)]/10 -z-10 rounded-full blur-2xl"></div>
+            </div>
+            
+            <div class="order-1 md:order-2 space-y-8 text-white" data-aos="fade-left">
+                <h2 class="text-3xl font-serif font-bold border-l-4 border-[var(--accent-red)] pl-6">煦經典</h2>
+                <p class="text-lg leading-loose opacity-90 font-light">
+                    「煦煦木白」不只是一家糖水舖，更是一場關於味覺的復興運動。我們保留了傳統粵式糖水的溫潤靈魂，並融入當代極簡的美學視覺。
+                </p>
+                <div class="grid grid-cols-2 gap-8 pt-6">
+                    <div>
+                        <h4 class="font-serif font-bold text-[var(--accent-gold)] mb-2 text-xl">古法煮製</h4>
+                        <p class="text-sm opacity-70">嚴選在地小農作物，堅持每日六小時慢火細熬。</p>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-[var(--accent-gold)] mb-2 text-xl">低糖配方</h4>
+                        <p class="text-sm opacity-70">以健康為核心，減輕負擔，只留下食材本真清甜。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 產品展示 Section (Masonry-like Grid) -->
+    <section id="products" class="py-32 px-8">
+        <div class="text-center mb-24" data-aos="fade-up">
+            <span class="text-[var(--accent-red)] tracking-[0.5em] text-sm mb-4 block uppercase font-bold">Featured Selections</span>
+            <h2 class="text-4xl font-serif font-bold">精選點心</h2>
+        </div>
+
+        <!-- 採用多欄排版模擬非對稱網格 -->
+        <div class="max-w-7xl mx-auto columns-1 md:columns-2 lg:columns-3 gap-8">
+            
+            <!-- 卡片 1 (建議替換為附圖 3: 桂花紅豆沙) -->
+            <div class="product-card group" data-aos="fade-up">
+                <div class="hover-scale rounded-2xl overflow-hidden mb-4 shadow-sm">
+                    <img src="resource/產品/紅豆.png" alt="紅豆沙" class="w-full">
+                </div>
+                <h3 class="font-serif text-xl font-bold">陳皮紅豆沙</h3>
+                <p class="text-sm opacity-50 mt-1 italic tracking-widest">Osmanthus Red Bean Soup</p>
+                <p class="text-sm mt-3 opacity-70 leading-relaxed">紅豆綿密、陳皮清香，暖心又順口。紅豆沙、拉絲麻糬</p>
+            </div>
+
+            <!-- 卡片 2 (建議替換為附圖 5: 銀耳蓮子羹) -->
+            <div class="product-card group" data-aos="fade-up" data-aos-delay="200">
+                <div class="hover-scale rounded-2xl overflow-hidden mb-4 shadow-sm">
+                    <img src="resource/產品/銀耳.png" alt="銀耳" class="w-full">
+                </div>
+                <h3 class="font-serif text-xl font-bold">枸杞紅棗銀耳湯</h3>
+                <p class="text-sm opacity-50 mt-1 italic tracking-widest">銀耳、紅棗、枸杞，最純粹的溫柔滋養</p>
+            </div>
+
+            <!-- 卡片 3 (建議替換為附圖 2: 紫米芋泥) -->
+            <div class="product-card group" data-aos="fade-up" data-aos-delay="400">
+                <div class="hover-scale rounded-2xl overflow-hidden mb-4 shadow-sm">
+                    <img src="resource/產品/滿分1.png" alt="滿分" class="w-full">
+                </div>
+                <h3 class="font-serif text-xl font-bold">滿分</h3>
+                <p class="text-sm opacity-50 mt-1 italic tracking-widest">十種經典配料的圓滿組合，一碗就滿足。 紅豆、蓮子、紫米、薏仁、芋圓、栗子、荔枝、蓮藕片、木薯、地瓜塊</p>
+            </div>
+
+            <!-- 卡片 4 (建議替換為附圖 1: 地瓜豆類拼盤) -->
+            <div class="product-card group" data-aos="fade-up">
+                <div class="hover-scale rounded-2xl overflow-hidden mb-4 shadow-sm">
+                    <img src="resource/產品/芋見.png" alt="芋見" class="w-full">
+                </div>
+                <h3 class="font-serif text-xl font-bold">芋見</h3>
+                <p class="text-sm opacity-50 mt-1 italic tracking-widest">芋泥、紫米、芋圓的柔滑口感，一口就是幸福。
+芋泥、芋圓、地瓜、薏仁、紫米</p>
+            </div>
+
+             <!-- 卡片 5 (建議替換為附圖 6: 蓮藕薏米碗) -->
+             <div class="product-card group" data-aos="fade-up" data-aos-delay="300">
+                <div class="hover-scale rounded-2xl overflow-hidden mb-4 shadow-sm">
+                    <img src="resource/產品/薯薯.png" alt="薯薯" class="w-full">
+                </div>
+                <h3 class="font-serif text-xl font-bold">薯薯</h3>
+                <p class="text-sm opacity-50 mt-1 italic tracking-widest">來自原住民的木薯以及台農 66 號紅肉地瓜，雙薯香氣，溫潤又飽滿。
+木薯、地瓜、蓮子、燕麥</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-zinc-900 text-stone-300 py-32 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20">
+            <div data-aos="fade-up">
+                <img src="resource/logo.jpg" alt="煦煦木白" class="h-16 md:h-20 mb-6">
+                <p class="text-sm leading-loose opacity-60">
+                    追求極致的東方甜味美學，<br>
+                    在喧囂的世界裡，為您保留一方恬靜時光。
+                </p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h4 class="font-serif text-xl text-white mb-8">門店資訊</h4>
+                <ul class="space-y-4 text-sm opacity-80 font-light">
+                    <li> 台北市信義區松仁路36號1樓</li>
+                    <li>週一至週日 11:30 - 20:30</li>
+                </ul>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400">
+                <h4 class="font-serif text-xl text-white mb-8">追蹤我們</h4>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-[var(--accent-gold)] transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-[var(--accent-gold)] transition-colors">Facebook</a>
+                </div>
+                <div class="mt-12 text-xs opacity-30">
+                    &copy; 2024 xuxumubai Dessert Space. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 初始化腳本 -->
+    <script>
+        // 初始化 AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-quad',
+            once: true,
+            offset: 100
+        });
+
+        // 導航欄捲動效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 平滑捲動補充（確保點擊 nav 連結有呼吸感）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
