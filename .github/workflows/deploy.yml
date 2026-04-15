@@ -24,11 +24,6 @@ jobs:
         with:
           lfs: false
 
-      - name: Setup Git LFS
-        run: |
-          git lfs install
-          git lfs pull
-
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
