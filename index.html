@@ -4,7 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>煦煦木白 | 精緻甜品</title>
+
+    <title>煦煦木白 | 新精緻甜品</title>
+
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 引入 AOS 動畫庫 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- 引入 Google Fonts: 標題用襯線體，內文用無襯線體 -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400&family=Zhi+Mang+Xing&display=swap"
+        rel="stylesheet">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,13 +57,15 @@
             --bg-gradient: linear-gradient(135deg, #F5F0E8 0%, #D8D0C4 100%);
             --text-main: #333333;
             --accent-red: #A62121;
-            --accent-gold: #C5A059;
+            --accent-gold: #FFB380;
         }
 
         body {
-            background: linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
+            background: 
+                url('resource/image/background/wave.svg') repeat center center,
+                linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
             background-attachment: fixed;
-            background-position: center center;
+            background-size: 100% 100%, cover;
             position: relative;
             min-height: 100vh;
         }
@@ -76,6 +91,18 @@
         /* 圖片容器防溢出設定 */
         .img-container {
             overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: inset 0 0 25px #C5A059;
+        }
+
+        .img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            box-shadow: inset 0 0 25px #C5A059;
+            pointer-events: none;
         }
 
         /* 輪播樣式 */
@@ -123,32 +150,36 @@
             width: 50%;
         }
 
-        .p-t-10{
+        .p-t-10 {
             padding-top: 10%;
+        }
+
+        .nvabar-text {
+            /* 參考 Adobe Fonts 或 CDNFonts 的字體名稱 */
+            font-family: "HOT-Gyoshokk", "Kouran Gyosho", cursive;
+            font-size: 1.6rem;
         }
     </style>
 </head>
 
 <body class="bg-brand-bg text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
 
-    <!-- Navbar (導覽列) -->
+    <!-- 懸浮式導航欄 -->
     <nav id="navbar"
-        class="fixed w-full z-50 transition-all duration-500 py-6 px-8 md:px-16 flex justify-between items-center text-white border-b border-transparent">
-        <a href="#" class="font-serif text-2xl tracking-widest font-medium z-10 relative">
-            <img src="resource/image/info/Logo.png" alt="煦煦木白" class="h-12 md:h-16">
-        </a>
-
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-10 font-sans text-sm tracking-widest uppercase font-light">
-            <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
-            <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
-            <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-        </ul>
-
-        <!-- Mobile Menu Icon (Simple text for minimalist approach) -->
-        <button class="md:hidden text-sm tracking-widest uppercase font-light hover:text-brand-accent">
-            Menu
-        </button>
+        class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center opacity-0">
+        <img src="resource/image/info/Logo.png" alt="煦煦木白" class="h-12 md:h-16">
+        <div class="hidden md:flex space-x-12 text-sm tracking-widest opacity-80 font-light text-black">
+            <a href="#brand-story" class="hover:text-[var(--accent-red)] transition-colors nvabar-text">品牌故事</a>
+            <a href="#portfolio" class="hover:text-[var(--accent-red)] transition-colors nvabar-text">精選甜品</a>
+            <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors nvabar-text">門店資訊</a>
+        </div>
+        <div class="md:relative">
+            <div class="mobile-menu-btn md:hidden" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
     <!--  Section-->
@@ -164,19 +195,20 @@
 
         <!-- 背景圖片（影片停格後顯示） -->
         <div class='absolute inset-0 z-0 transition-opacity duration-1000' id='heroBgimage' style='opacity: 0'>
-            <img src='resource/image/brand/brandimage.png' class='h-full object-contain opacity-50' alt='hero-bg'>
+            <img src='resource/image/brand/brandimage.png' class='w-full h-full object-cover' alt='hero-bg'>
         </div>
 
 
         <!-- 文字內容 -->
-        <div class='relative z-10 flex flex-col md:flex-row items-center gap-12 px-6' id='heroContent'
-            style='opacity: 0; transition: opacity 1s ease 0.5s'>
-            <h1 class='vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter'
-                data-aos='fade-right' data-aos-duration='1500'>
+        <div id="herotext-range" class='relative z-10 flex flex-col md:flex-row items-center gap-12 px-6'
+            id='heroContent' style='opacity: 0; transition: opacity 1s ease 0.5s'>
+            <h1 id='heroTitle'
+                class='vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter'
+                style='opacity: 0; transform: translateX(-30px); transition: all 0.8s ease'>
                 東方甜品，<br><span class='text-[var(--accent-red)]'>詩意呈現。</span>
             </h1>
-            <div class='max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24' data-aos='fade-up'
-                data-aos-delay='500'>
+            <div id='heroSubtitle' class='max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24'
+                style='opacity: 0; transform: translateX(-30px); transition: all 0.8s ease'>
                 <p>取法自然，以四時之物入饌。<br>東方生活美學<br>在繁瑣的日常中，尋得一份純粹的甘甜。</p>
             </div>
         </div>
@@ -187,12 +219,12 @@
         </div>
     </header>
 
-    <!-- Brand Story (品牌故事) -->
+    <!-- section1. Brand Story (品牌故事) -->
     <section id="brand-story"
         class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
         <!-- 背景圖片 -->
         <div class="absolute inset-0">
-            <img src="resource/image/brand/brandimage.png" alt="品牌故事" class="w-full h-full object-cover">
+            <img src="resource/image/info/入會禮券圖.png" alt="品牌故事" class="w-full h-full">
         </div>
 
         <!-- 暗化遮罩 -->
@@ -207,11 +239,11 @@
         </div>
     </section>
 
-    <!--經典產品介紹-->
+    <!--section2. 經典產品介紹-->
     <section id="about" class="py-24 md:py-32 px-6 md:px-16 max-w-7xl mx-auto">
         <!-- 區塊 1 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-1">
+            <div class="cat_img relative group h-[50vh] md:h-[70vh] md:order-1">
                 <img src="resource/image/others/nourishing.png" alt="糖水"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-4 border border-white/40 pointer-events-none"></div>
@@ -221,7 +253,7 @@
 
         <!-- 區塊2 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-2 w-1/2 ml-auto">
+            <div class="cat_img  relative group h-[50vh] md:h-[70vh] md:order-2 w-1/2 ml-auto">
                 <div class="w-full h-full flex items-center justify-center">
                     <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
                             src="resource/image/brand/brandimage5.PNG"></span>
@@ -231,17 +263,18 @@
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-1">
 
                 <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料呈現)</h2>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料介紹,
+                    右圖再換成飲品圖)</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)/p>
+                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)</p>
                 </div>
             </div>
         </div>
         <div class="mt-16 md:mt-24"></div>
 
-        <!-- 區塊3-->
+        <!-- section3. 區塊3-->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-1 w-1/2 ml-auto">
+            <div class="cat_img relative group h-[50vh] md:h-[70vh] md:order-1 w-1/2 ml-auto">
                 <div class="w-full h-full flex items-center justify-center">
                     <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
                             src="resource/image/brand/brandimage5.PNG"></span>
@@ -251,9 +284,10 @@
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-2">
 
                 <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料呈現)</h2>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料介紹,
+                    圖再換成飲品圖)</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)/p>
+                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)</p>
                 </div>
             </div>
 
@@ -263,11 +297,13 @@
 
 
 
-    <!-- Section 4 商品 -->
+    <!-- Section4 商品 -->
     <section id="portfolio" class="py-24">
+
         <div class="max-w-7xl mx-auto px-6 md:px-16">
+           
             <div class="text-center mb-20">
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">精選點心</h2>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">精選甜品</h2>
                 <p class="font-sans text-sm tracking-widest text-brand-text/60 uppercase"></p>
             </div>
 
@@ -363,18 +399,11 @@
                 </div>
 
             </div>
-
-            <div class="text-center mt-20">
-                <a href="#"
-                    class="inline-block border border-brand-gold text-brand-gold py-3 px-10 text-sm tracking-widest uppercase font-light hover:bg-brand-gold hover:text-white transition-all duration-300">
-                    回首頁
-                </a>
-            </div>
         </div>
     </section>
 
     <!-- Section5 原料 -->
-    <section id="portfolio" class="py-24 bg-white">
+    <section id="portfolio" class="py-24">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
             <div class="text-center mb-20">
                 <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">嚴選食材</h2>
@@ -497,7 +526,7 @@
             <!-- 社群圖示 -->
             <div class="flex justify-center items-center gap-10 mb-10">
                 <img src="resource/image/info/LineQRCode.png" alt="Line QRCode" class="w-20 md:w-24">
-               
+
                 <a href=""
                     class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -584,12 +613,37 @@
         const heroBgimage = document.getElementById('heroBgimage');
 
         if (heroVideo) {
+            // 確保影片不循環播放
+            heroVideo.removeAttribute('loop');
+
             heroVideo.addEventListener('ended', () => {
+                // 影片淡出
                 heroVideo.style.opacity = '0';
+
+                // 1秒後停止影片並顯示背景圖片和導航欄
                 setTimeout(() => {
                     heroVideo.pause();
+                    heroVideo.currentTime = 0;
                     heroBgimage.style.opacity = '1';
-                    heroContent.style.opacity = '1';
+                    // 顯示導航欄
+                    navbar.style.opacity = '1';
+
+
+                    const herotextrange = document.getElementById('herotext-range');
+                    herotextrange.style.opacity = '1';
+                    herotextrange.style.transform = 'translateX(0)';
+
+                    // 顯示標題（從左滑入）
+                    const heroTitle = document.getElementById('heroTitle');
+                    heroTitle.style.opacity = '1';
+                    heroTitle.style.transform = 'translateX(0)';
+
+                    // 延遲500ms後顯示副標題
+                    setTimeout(() => {
+                        const heroSubtitle = document.getElementById('heroSubtitle');
+                        heroSubtitle.style.opacity = '1';
+                        heroSubtitle.style.transform = 'translateX(0)';
+                    }, 500);
                 }, 1000);
             });
 
