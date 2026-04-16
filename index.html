@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 
 <head>
@@ -208,8 +208,10 @@
             justify-content: center;
             gap: 24px;
             font-size: 18px;
+            /* 初始隱藏狀態 */
             transform: translateX(100%);
-            transition: transform 0.3s ease;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         /* 手機版 */
@@ -232,14 +234,15 @@
                 transform: translateY(10px);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.3s ease;
+                transition: transform 0.3s ease, opacity 0.3s ease;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             }
         }
 
-        /* 選單展開狀態 */
+        /* 選單展開狀態 - 淡入顯示 */
         .mobile-dropdown.active {
             transform: translateX(0);
+            opacity: 1;
         }
 
         @media (min-width: 768px) {
@@ -248,6 +251,11 @@
                 opacity: 1;
                 visibility: visible;
             }
+        }
+
+        /* 隱藏時的過渡效果 */
+        .mobile-dropdown:not(.active) {
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
     </style>
 </head>
@@ -704,11 +712,23 @@
         // 手機選單切換
         const menuToggle = document.getElementById('menuToggle');
         const mobileDropdown = document.getElementById('mobileDropdown');
+        let hideTimeout;
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             // 切換選單顯示/隱藏
             mobileDropdown.classList.toggle('active');
+            
+            // 清除之前的計時器
+            if (hideTimeout) clearTimeout(hideTimeout);
+        });
+
+        // 滑鼠離開時延遲隱藏（桌面版）
+        mobileDropdown.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                mobileDropdown.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }, 500); // 0.5秒延遲
         });
 
         // 首頁影片背景控制
