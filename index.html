@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 
 <head>
@@ -191,15 +191,63 @@
             transform: translateY(-9px) rotate(-45deg);
         }
 
-        /* 手機下拉選單顯示/隱藏動畫 */
-        #mobileDropdown.hidden {
-            display: none;
+        /* 手機/桌面下拉選單樣式 */
+        .mobile-dropdown {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 256px;
+            height: 100%;
+            background: #FFDAC8;
+            border: 1px solid #E5E5E5;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            font-size: 18px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
         }
 
-        #mobileDropdown:not(.hidden) {
-            display: flex;
+        /* 手機版 */
+        @media (max-width: 767px) {
+            .mobile-dropdown {
+                width: 256px;
+            }
         }
-            font-size: 1.6rem;
+
+        /* 桌面版：下拉選單樣式 */
+        @media (min-width: 768px) {
+            .mobile-dropdown {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 200px;
+                height: auto;
+                background: #FFDAC8;
+                border: 1px solid #E5E5E5;
+                transform: translateY(10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* 選單展開狀態 */
+        .mobile-dropdown.active {
+            transform: translateX(0);
+        }
+
+        @media (min-width: 768px) {
+            .mobile-dropdown.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
         }
     </style>
 </head>
@@ -210,23 +258,20 @@
     <nav id="navbar"
         class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center opacity-0">
         <img src="resource/image/info/Logo.png" alt="煦煦木白" class="h-12 md:h-16">
-        <div class="hidden md:flex space-x-12 text-sm tracking-widest opacity-80 font-light text-black">
-            <a href="#brand-story" class="hover:text-[var(--accent-red)] transition-colors nvabar-text">品牌故事</a>
-            <a href="#portfolio" class="hover:text-[var(--accent-red)] transition-colors nvabar-text">精選甜品</a>
-            <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors nvabar-text">門店資訊</a>
-        </div>
         <div class="md:relative">
-            <div class="mobile-menu-btn md:hidden" id="menuToggle">
+            <div class="mobile-menu-btn" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-        <!-- 手機版下拉選單 -->
-        <div id="mobileDropdown" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-40 hidden flex-col items-center justify-center gap-8 text-xl font-light">
-            <a href="#brand-story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
-            <a href="#portfolio" class="hover:text-[var(--accent-red)] transition-colors">精選甜品</a>
-            <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
+        <!-- 手機版/桌面版下拉選單 -->
+        <div id="mobileDropdown" class="mobile-dropdown">
+            <a href="#brand-story" class="text-black hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
+            <a href="#portfolio" class="text-black hover:text-[var(--accent-red)] transition-colors">精選甜品</a>
+            <a href="#contact" class="text-black hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
+            <a href="#" class="text-black hover:text-[var(--accent-red)] transition-colors">回首頁</a>
+            
         </div>
     </nav>
 
@@ -636,13 +681,23 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const href = this.getAttribute('href');
+                
+                // 如果是回首頁 (#)，則滾動到頂部
+                if (href === '#' || href === '') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
                 // 關閉手機選單
                 document.getElementById('menuToggle').classList.remove('active');
-                document.getElementById('mobileDropdown').classList.add('hidden');
-                document.getElementById('mobileDropdown').classList.remove('flex');
+                document.getElementById('mobileDropdown').classList.remove('active');
             });
         });
 
@@ -652,14 +707,8 @@
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
-            // 切換下拉選單顯示/隱藏
-            if (mobileDropdown.classList.contains('hidden')) {
-                mobileDropdown.classList.remove('hidden');
-                mobileDropdown.classList.add('flex');
-            } else {
-                mobileDropdown.classList.add('hidden');
-                mobileDropdown.classList.remove('flex');
-            }
+            // 切換選單顯示/隱藏
+            mobileDropdown.classList.toggle('active');
         });
 
         // 首頁影片背景控制
