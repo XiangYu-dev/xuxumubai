@@ -193,11 +193,10 @@
 
         /* 手機/桌面下拉選單樣式 */
         .mobile-dropdown {
-            position: fixed;
+            position: absolute;
             right: 0;
-            top: 0;
+            top: 100%;
             width: 256px;
-            height: 100%;
             background: #FFDAC8;
             border: 1px solid #E5E5E5;
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
@@ -218,6 +217,14 @@
         @media (max-width: 767px) {
             .mobile-dropdown {
                 width: 256px;
+            }
+        }
+
+        /* 桌面版：下拉選單樣式 */
+        @media (min-width: 768px) {
+            .mobile-dropdown {
+                width: 200px;
+                transform: translateY(10px);
             }
         }
 
@@ -278,7 +285,6 @@
             <a href="#brand-story" class="text-black hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
             <a href="#portfolio" class="text-black hover:text-[var(--accent-red)] transition-colors">精選甜品</a>
             <a href="#contact" class="text-black hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-            <a href="#" class="text-black hover:text-[var(--accent-red)] transition-colors">回首頁</a>
             
         </div>
     </nav>
@@ -729,6 +735,16 @@
                 mobileDropdown.classList.remove('active');
                 menuToggle.classList.remove('active');
             }, 500); // 0.5秒延遲
+        });
+
+        // 點擊選單外部區域關閉選單
+        document.addEventListener('click', (e) => {
+            if (!mobileDropdown.contains(e.target) && 
+                !menuToggle.contains(e.target) && 
+                mobileDropdown.classList.contains('active')) {
+                mobileDropdown.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
         });
 
         // 首頁影片背景控制
