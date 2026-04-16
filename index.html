@@ -4,19 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>煦煦木白 | 新精緻甜品</title>
+    <title>煦煦木白 | 精緻甜品</title>
 
-    <!-- 引入 Tailwind CSS CDN -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- 引入 AOS 動畫庫 -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- 引入 Google Fonts: 標題用襯線體，內文用無襯線體 -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400&family=Zhi+Mang+Xing&display=swap"
-        rel="stylesheet">
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#F9F8F6',      // 暖米白背景
+                            text: '#333333',    // 深炭灰文字
+                            accent: '#B0B7B0',  // 淡鼠尾草綠點綴
+                            gold: '#A38B71',    // 優雅棕金 (參考圖中的文字色調)
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', '"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Playfair Display"', '"Noto Serif TC"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
         :root {
@@ -35,226 +55,101 @@
             min-height: 100vh;
         }
 
-        /* 水彩紙紋理層 */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.2;
-            mix-blend-mode: overlay;
-            pointer-events: none;
-            z-index: -1;
+        /* 隱藏捲軸但保持可滾動 (優化視覺) */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .font-serif {
-            font-family: 'Noto Serif TC', serif;
+        ::-webkit-scrollbar-track {
+            background: #F9F8F6;
         }
 
-        .font-calligraphy {
-            font-family: 'Zhi Mang Xing', cursive;
+        ::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 4px;
         }
 
-        /* 豎排文字樣式 */
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            letter-spacing: 0.5em;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A38B71;
         }
 
-        /* 導航欄捲動效果 */
-        nav.scrolled {
-            background-color: rgba(249, 247, 242, 0.95);
-            backdrop-filter: blur(10px);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        /* 自定義按鈕 hover */
-        .btn-oriental {
-            position: relative;
+        /* 圖片容器防溢出設定 */
+        .img-container {
             overflow: hidden;
-            transition: all 0.5s ease;
-            border: 1px solid var(--text-main);
         }
 
-        .btn-oriental:hover {
-            color: white;
-            background-color: var(--accent-red);
-            border-color: var(--accent-red);
+        /* 輪播樣式 */
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
-        /* 圖片微縮放效果 */
-        .hover-scale img {
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        .carousel-slide.active {
+            opacity: 1;
         }
 
-        .hover-scale:hover img {
-            transform: scale(1.08);
-        }
-
-        /* 自定義產品卡片樣式 */
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .product-grid {
-            max-width: 80rem;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        #Ingredients {
-            min-height: 100vh;
-        }
-
-        #Ingredients .absolute {
-            z-index: 0;
-        }
-
-        #Ingredients .relative {
-            z-index: 1;
-        }
-
-        /* 漢堡選單 */
-        .mobile-menu-btn {
-            width: 30px;
-            height: 24px;
-            position: relative;
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            border: none;
             cursor: pointer;
         }
 
-        .mobile-menu-btn span {
-            display: block;
-            position: absolute;
-            height: 2px;
-            width: 100%;
-            background: var(--text-main);
-            border-radius: 2px;
-            opacity: 1;
-            left: 0;
-            transform: rotate(0deg);
-            transition: .25s ease-in-out;
+        .carousel-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
-        .mobile-menu-btn span:nth-child(1) {
-            top: 0;
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
         }
 
-        .mobile-menu-btn span:nth-child(2) {
-            top: 11px;
+        .footer-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
         }
 
-        .mobile-menu-btn span:nth-child(3) {
-            top: 22px;
+        .w-50{
+            width: 50%;
         }
-
-        .mobile-menu-btn.active span:nth-child(1) {
-            top: 11px;
-            transform: rotate(135deg);
-        }
-
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-            left: -60px;
-        }
-
-        .mobile-menu-btn.active span:nth-child(3) {
-            top: 11px;
-            transform: rotate(-135deg);
-        }
-
-        .mobile-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(249, 247, 242, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .mobile-dropdown a {
-            display: block;
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-dropdown a:hover {
-            background: var(--accent-red);
-            color: white;
-            padding-left: 2.5rem;
-        }
-
-        .material-h {
-            height: 234.73px
-        }
-
-        .font-center {
-            align-self: center;
-        }
+        
     </style>
 </head>
 
-<body>
+<body class="bg-brand-bg text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
 
-    <!-- 懸浮式導航欄 -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center">
-        <img src="resource/LOGO_N.png" alt="煦煦木白" class="h-12 md:h-16">
-        <div class="hidden md:flex space-x-12 text-sm tracking-widest opacity-80 font-light">
-            <a href="#home" class="hover:text-[var(--accent-red)] transition-colors">首頁</a>
+    <!-- Navbar (導覽列) -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-500 py-6 px-8 md:px-16 flex justify-between items-center text-white border-b border-transparent">
+        <a href="#" class="font-serif text-2xl tracking-widest font-medium z-10 relative">
+            <img src="resource/image/info/Logo.png" alt="煦煦木白" class="h-12 md:h-16">
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-10 font-sans text-sm tracking-widest uppercase font-light">
             <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
             <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
             <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-        </div>
-        <div class="md:relative">
-            <div class="mobile-menu-btn md:hidden" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="mobile-dropdown" id="mobileDropdown">
-                <a href="#home" class="hover:text-[var(--accent-red)] transition-colors">首頁</a>
-                <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
-                <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
-                <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-            </div>
-        </div>
+        </ul>
+
+        <!-- Mobile Menu Icon (Simple text for minimalist approach) -->
+        <button class="md:hidden text-sm tracking-widest uppercase font-light hover:text-brand-accent">
+            Menu
+        </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section id='home' class='relative h-screen flex items-center justify-center overflow-hidden'>
+    <!--  Section-->
+    <header class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
         <!-- 背景影片 -->
         <video id='heroVideo' class='absolute inset-0 w-full h-full object-cover transition-opacity duration-1000'
             style='opacity: 1' autoplay muted playsinline>
@@ -262,12 +157,13 @@
         </video>
 
         <!-- 半透明遮罩 -->
-        <div class='absolute inset-0 bg-black/20'></div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
         <!-- 背景圖片（影片停格後顯示） -->
         <div class='absolute inset-0 z-0 transition-opacity duration-1000' id='heroBgimage' style='opacity: 0'>
-            <img src='resource/image/brand/brandimage.png' class='w-full h-full object-cover opacity-50' alt='hero-bg'>
+            <img src='resource/image/brand/brandimage.png' class='h-full object-contain opacity-50' alt='hero-bg'>
         </div>
+
 
         <!-- 文字內容 -->
         <div class='relative z-10 flex flex-col md:flex-row items-center gap-12 px-6' id='heroContent'
@@ -286,307 +182,378 @@
         <div class='absolute bottom-12 right-12 font-calligraphy text-4xl text-[var(--accent-red)] opacity-40'>
 
         </div>
-    </section>
+    </header>
 
+    <!-- Brand Story (品牌故事) -->
+    <section id="brand-story"
+        class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
+        <!-- 背景圖片 -->
+        <div class="absolute inset-0">
+            <img src="resource/image/brand/brandimage.png" alt="品牌故事" class="w-full h-full object-cover">
+        </div>
 
-    <!-- 品牌故事 Section -->
-    <section id="story" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- 背景視頻 -->
-        <!-- <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
-            <source src="resource/zooTrain.mp4" type="video/mp4">
-        </video> -->
+        <!-- 暗化遮罩 -->
+        <div class="absolute inset-0 bg-black/40"></div>
 
-        <!-- 半透明遮罩 -->
-        <div class="absolute inset-0 bg-black/20"></div>
-
-        <!-- 品牌故事內容 -->
-        <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-8 md:px-24">
-            <div class="order-2 md:order-1 relative" data-aos="fade-up">
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="resource/image/brand/brandimage4.PNG" class="w-full" alt="story">
-                </div>
-                <div
-                    class="absolute -bottom-8 -right-8 w-48 h-48 bg-[var(--accent-gold)]/10 -z-10 rounded-full blur-2xl">
-                </div>
-            </div>
-
-            <div class="order-1 md:order-2 space-y-8 text-white" data-aos="fade-left">
-                <h2 class="text-3xl font-serif font-bold border-l-4 border-[var(--accent-red)] pl-6">((品牌口號 ex:煦經典)</h2>
-                <p class="text-lg leading-loose opacity-90 font-light">
-                    (品牌文字: ex「煦煦木白」保留了傳統粵式糖水的溫潤靈魂，並融入當代極簡的美學視覺。)
-                </p>
-                <div class="grid grid-cols-2 gap-8 pt-6">
-                    <div>
-                        <h4 class="font-serif font-bold text-[var(--accent-gold)] mb-2 text-xl">古法煮製</h4>
-                        <p class="text-sm opacity-70">嚴選在地小農作物，堅持每日六小時慢火細熬。</p>
-                    </div>
-                    <div>
-                        <h4 class="font-serif font-bold text-[var(--accent-gold)] mb-2 text-xl">低糖配方</h4>
-                        <p class="text-sm opacity-70">以健康為核心，減輕負擔，只留下食材本真清甜。</p>
-                    </div>
-                </div>
-            </div>
+        <!-- 文字內容 -->
+        <div class="relative z-10 text-white px-6 max-w-3xl">
+            <span class="font-sans text-sm tracking-[0.3em] uppercase mb-4 block opacity-80">Brand Story</span>
+            <p class="font-serif text-xl md:text-2xl tracking-wider leading-relaxed">
+                （品牌故事文字，待補上約 50-60 字）
+            </p>
         </div>
     </section>
 
-
-    <section id="about" class="py-24 px-6 md:px-16 max-w-7xl mx-auto">
-        <!-- 區塊 1： -->
+    <!--經典產品介紹-->
+    <section id="about" class="py-24 md:py-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <!-- 區塊 1 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh]">
-                <img src="resource/image/brand/brandimage2.PNG" alt=""
+            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-1">
+                <img src="resource/image/others/nourishing.png" alt="糖水"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-4 border border-white/40 pointer-events-none"></div>
             </div>
-
-            <div class="cat_text flex flex-col justify-center py-8 md:py-0">
-                <div class="cat_icon mb-6">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-accent" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6c.5 0 1.5.5 2 1.5S15 8.5 15 10c0 1.5-1.5 3-3 3s-3 1.5-3 3 1.5 3 3 3 3-1.5 3-3c0-1.5 1-2.5 1.5-3s1.5-1.5 2-1.5M12 6c-.5 0-1.5.5-2 1.5S9 8.5 9 10c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3c0 1.5-1 2.5-1.5 3S6 14.5 5 14.5" />
-                    </svg> -->
-                </div>
-                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">Our Concept</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">手作糖水的匠心</h2>
-                <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>保留了傳統粵式糖水的溫潤靈魂</p>
-                    <p>融入當代極簡的美學視覺。</p>
-                </div>
-            </div>
         </div>
+        <div class="mt-16 md:mt-24"></div>
 
-        <!-- 區塊 2：下午茶 (預留，未來補上素材) -->
+        <!-- 區塊2 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-2">
-                <div class="w-full h-full bg-brand-accent/10 flex items-center justify-center">
+            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-2 w-1/2 ml-auto">
+                <div class="w-full h-full flex items-center justify-center">
                     <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
-                            src="resource/image/brand/brandimage.png"></span>
+                            src="resource/image/brand/brandimage5.PNG"></span>
                 </div>
             </div>
 
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-1">
-                <div class="cat_icon mb-6">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-accent" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6c.5 0 1.5.5 2 1.5S15 8.5 15 10c0 1.5-1.5 3-3 3s-3 1.5-3 3 1.5 3 3 3 3-1.5 3-3c0-1.5 1-2.5 1.5-3s1.5-1.5 2-1.5M12 6c-.5 0-1.5.5-2 1.5S9 8.5 9 10c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3c0 1.5-1 2.5-1.5 3S6 14.5 5 14.5" />
-                    </svg> -->
-                </div>
-                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">Tea Time</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">美好時光</h2>
+
+                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料呈現)</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>天然紅薯、紫米與蓮藕等大地恩賜</p>
-                    <p>療癒心靈的精緻養生甜品</p>
+                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)/p>
                 </div>
             </div>
         </div>
-         <!-- 區塊 3： -->
+        <div class="mt-16 md:mt-24"></div>
+
+        <!-- 區塊3-->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh]">
-                <img src="resource/image/others/nourishing.png" alt=""
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-4 border border-white/40 pointer-events-none"></div>
+            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-1 w-1/2 ml-auto">
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
+                            src="resource/image/brand/brandimage5.PNG"></span>
+                </div>
             </div>
 
-            <div class="cat_text flex flex-col justify-center py-8 md:py-0">
-                <div class="cat_icon mb-6">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-accent" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6c.5 0 1.5.5 2 1.5S15 8.5 15 10c0 1.5-1.5 3-3 3s-3 1.5-3 3 1.5 3 3 3 3-1.5 3-3c0-1.5 1-2.5 1.5-3s1.5-1.5 2-1.5M12 6c-.5 0-1.5.5-2 1.5S9 8.5 9 10c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3c0 1.5-1 2.5-1.5 3S6 14.5 5 14.5" />
-                    </svg> -->
-                </div>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字)</h2>
+            <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-2">
+
+                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料呈現)</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>(形象風格文字)</p>
+                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)/p>
                 </div>
             </div>
+
         </div>
 
-        <!-- 區塊5 -->
-        <!--  -->
     </section>
 
 
 
-    <!-- 產品展示 Section -->
-    <section id="products" class="py-32 px-8">
-        <div class="text-center" data-aos=fade-up>
-            <span class="text-[var(--accent-red)] tracking-[0.5em] text-sm mb-4 block uppercase font-bold"></span>
-            <h2 class="text-4xl" font-serif font-bold>精選點心</h2>
-        </div>
-
-        <div class="product-grid">
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙" style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">桂花紅豆沙</h3>
-                <p class="text-sm mt-3 opacity-70 leading-relaxed font-center">(介紹文字: 紅豆綿密、陳皮清香，暖心又順口)</p>
+    <!-- Section 4 商品 -->
+    <section id="portfolio" class="py-24">
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">精選點心</h2>
+                <p class="font-sans text-sm tracking-widest text-brand-text/60 uppercase"></p>
             </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=200>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/prd/prd_fungus.png" alt="銀耳" style="width: 100%;  object-fit: cover">
+            <!-- 網格佈局 (大螢幕時中間列下移，營造錯落感) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+
+                <!-- 圖片 1 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[3/4] bg-gray-100">
+                        <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            桂花紅豆沙</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字: 紅豆綿密、陳皮清香，暖心又順口)</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">銀耳蓮子羹</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">銀耳、紅棗、枸杞，最純粹的溫柔滋養</p>
+
+                <!-- 圖片 2 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="img-container aspect-[4/5] bg-gray-100">
+                        <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            銀耳蓮子羹</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex:銀耳、紅棗、枸杞，最純粹的溫柔滋)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 圖片 3 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[3/4] bg-gray-100">
+                        <img src="resource/image/prd/prd_fullmarks.png" alt="滿分"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            滿分</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">介紹文字, ex: 經典配料的圓滿組合，一碗就滿足)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 圖片 4 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[4/5] bg-gray-100">
+                        <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            地瓜豆類拼盤</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字, ex: 地瓜的柔滑口感，一口就是幸福)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 圖片 5 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="img-container aspect-[3/4] bg-gray-100">
+                        <img src="resource/image/prd/prd_adlay.png"" alt=" 薏仁燕麥"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            薏仁燕麥</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: 薏仁與燕麥的完美結合，營養又健康)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 圖片 6 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[4/5] bg-gray-100">
+                        <img src="resource/image/prd/prd_dumpling.png" alt="湯圓"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            湯圓</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字)</p>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=400>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/prd/prd_fullmarks.png" alt="滿分" style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">滿分</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字, ex: 經典配料的圓滿組合，一碗就滿足)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">地瓜豆類拼盤</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字, ex: 地瓜的柔滑口感，一口就是幸福)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=300>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/prd/prd_ adlay.png" alt="薏仁燕麥" style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">薏仁燕麥</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字 ex: 薏仁與燕麥的完美結合，營養又健康)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=500>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/prd/prd_dumpling.png" alt="湯圓" style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">湯圓</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 原料展示 Section -->
-    <section id="material" class="px-8">
-        <div class="text-center" data-aos=fade-up>
-            <span class="text-[var(--accent-red)] tracking-[0.5em] text-sm mb-4 block uppercase font-bold"></span>
-            <h2 class="text-4xl" font-serif font-bold>嚴選原料</h2>
-        </div>
-
-        <div class="product-grid">
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img class="material-h" src="resource/image/material/material_lotusroot2.png" alt="紅豆沙"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">蓮藕</h3>
-                <p class="text-sm mt-3 opacity-70 leading-relaxed font-center">(介紹文字: Ex: 蓮藕清甜爽脆，營養豐富)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=200>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/material/material_lotusseeds.png" alt="銀耳"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">蓮子</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字: )</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=400>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img class="material-h" src="resource/image/material/material_avocado.png" alt="滿分"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">酪梨</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/material/material_potato.png" alt="芋見"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">地瓜豆</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=300>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/material/material_purplerice.png" alt="薯薯"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">紫米</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=500>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/image/material/material_yam.png" alt="湯圓"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">地瓜?</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
+            <div class="text-center mt-20">
+                <a href="#"
+                    class="inline-block border border-brand-gold text-brand-gold py-3 px-10 text-sm tracking-widest uppercase font-light hover:bg-brand-gold hover:text-white transition-all duration-300">
+                    回首頁
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- info Section -->
-    <section id="about-us" class="py-16 px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- Section5 原料 -->
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">嚴選食材</h2>
+                <p class="font-sans text-sm tracking-widest text-brand-text/60 uppercase"></p>
+            </div>
 
-                <!-- 左側：圖片區塊 -->
-                <div class="flex flex-col gap-4">
-                    <img src="resource/image/info/Logo.png" alt="煦煦木白" class="w-full max-w-md">
-                    <!-- <img src="resource/image/info/Logo.png" alt="Logo" class="w-32"> -->
+            <!-- 網格佈局 (大螢幕時中間列下移，營造錯落感) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+
+                <!-- 圖片 1 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[3/4] bg-gray-100">
+                        <img src="resource/image/material/material_lotusroot2.png" alt="蓮藕"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            蓮藕</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字: Ex: 蓮藕清甜爽脆，營養豐富)</p>
+                    </div>
                 </div>
 
-                <!-- 右側：文字 + 社群 -->
-                <div class="space-y-6">
+                <!-- 圖片 2 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="img-container aspect-[4/5] bg-gray-100">
+                        <img src="resource/image/material/material_lotusseeds.png" alt="蓮子"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            銀耳</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: 蓮子xxx)</p>
+                    </div>
+                </div>
 
-                    <!-- IG 連結（請補上連結） -->
-                    <span>Instagram</span>
+                <!-- 圖片 3 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[3/4] bg-gray-100">
+                        <img src="resource/image/material/material_yam.png" alt="地瓜"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            地瓜</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字: xxxx)</p>
+                    </div>
+                </div>
+
+                <!-- 圖片 4 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[4/5] bg-gray-100">
+                        <img src="resource/image/material/material_avocado.png" alt="酪梨"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            酪梨</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字, ex: 酪梨oooo)</p>
+                    </div>
+                </div>
+
+                <!-- 圖片 5 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="img-container aspect-[3/4] bg-gray-100">
+                        <img src="resource/image/material/material_potato.png"" alt=" 地瓜豆"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            地瓜豆</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: qqqqqqq)</p>
+                    </div>
+                </div>
+
+                <!-- 圖片 6 -->
+                <div class="group cursor-pointer">
+                    <div class="img-container aspect-[4/5] bg-gray-100">
+                        <img src="resource/image/material/material_purplerice.png" alt="紫米"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            紫米</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字)</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-20">
+                <a href="#"
+                    class="inline-block border border-brand-gold text-brand-gold py-3 px-10 text-sm tracking-widest uppercase font-light hover:bg-brand-gold hover:text-white transition-all duration-300">
+                    回首頁
+                </a>
+            </div>
+        </div>
+    </section>
+   
+    <!-- Footer / Contact (聯絡資訊) -->
+    <footer id="contact" class="bg-brand-bg pt-20 pb-12 border-t border-gray-200">
+        <div class="footer-row">
+            <!-- 左側：圖片區塊 -->
+            <div class="flex flex-col">
+                <img src="resource/image/info/LineQRCode.png" alt="煦煦木白" class="w-50 max-w-md">
+                <!-- <img src="resource/image/info/Logo.png" alt="Logo" class="w-32"> -->
+            </div>
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <!-- Logo 區  -->
+
+                <div class="mb-10">
+                    <h2 class="font-serif text-2xl tracking-widest font-medium text-brand-gold">
+                        <span class="block text-xs tracking-[0.3em] font-sans mt-2 text-brand-text/60">煦煦木白</span>
+                    </h2>
+                </div>
+
+                <!-- 連結列 -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="font-serif text-xl mb-8">門店資訊</h4>
+                    <ul class="space-y-4 text-sm opacity-80 font-light">
+                        <li> 台北總店: 台北市信義區松仁路36號1樓 週一至週日 11:30 - 20:30</li>
+                        <li> 板橋分店: 新北市板橋區板橋車站 週一至週日 11:30 - 20:30</li>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 社群圖示 -->
+                <div class="flex justify-center gap-6 mb-10">
                     <a href="#"
-                        class="inline-flex items-center gap-2 text-[var(--accent-red)] hover:opacity-70 transition-opacity">
-                      
-                        <span>(連結)</span>
+                        class="w-10 h-10 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.018 2.083c2.26 0 4.098 1.852 4.098 4.128 0 2.276-1.838 4.128-4.098 4.128-2.26 0-4.098-1.852-4.098-4.128 0-2.276 1.838-4.128 4.098-4.128zM3.432 8.18c.41 0 .744-.335.744-.75 0-.413-.334-.748-.744-.748-.41 0-.744.335-.744.748 0 .415.334.75.744.75zm6.075 1.185c.41 0 .744-.335.744-.75 0-.413-.334-.748-.744-.748-.41 0-.744.335-.744.748 0 .415.334.75.744.75zm6.468 1.185c.41 0 .744-.335.744-.75 0-.413-.334-.748-.744-.748-.41 0-.744.335-.744.748 0 .415.334.75.744.75zm2.143 3.818c.3-.412.495-.906.495-1.433 0-1.46-1.178-2.64-2.636-2.64h-9.36c-1.458 0-2.636 1.18-2.636 2.64 0 .527.195 1.022.495 1.433-.565.38-.94.99-.94 1.688 0 1.13.918 2.048 2.048 2.048.228 0 .448-.037.654-.107.206.566.566 1.025 1.027 1.025h6.632c.46 0 .82-.46 1.026-1.025.207.07.427.107.655.107 1.13 0 2.048-.918 2.048-2.048 0-.698-.374-1.308-.94-1.688zM12 18.32c-1.565 0-2.832-1.268-2.832-2.832 0-.43.096-.833.267-1.19h5.13c.172.357.267.76.267 1.19 0 1.564-1.268 2.832-2.832 2.832z" />
+                        </svg>
                     </a>
+                    <a href=""
+                        class="w-10 h-10 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
 
-                    <!-- Line QRCode -->
-                    <!-- <div class="flex items-center gap-4">
-                        <span class="text-sm opacity-70">加入 LINE 好友</span>
-                        <img src="resource/image/info/LineQRCode.png" alt="Line QRCode" class="w-24 h-24">
-
-                    </div> -->
+                <!-- 版權宣告 -->
+                <div
+                    class="border-t border-gray-200 pt-8 text-xs font-sans font-light tracking-wider text-brand-text/50">
+                    <p>&copy; 2026 xuxumubai. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="text-stone-800 px-8" style="background: linear-gradient(180deg, #FFF9F2 0%, #F5E6D3 100%); min-height: 160px; position: relative;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); opacity: 0.15; mix-blend-mode: overlay; pointer-events: none;"></div>
-        
-        <div class="max-w-7xl mx-auto flex items-center" style="position: relative; z-index: 1; min-height: 160px;">
-            
-            <div data-aos="fade-up" data-aos-delay="200">
-                <h4 class="font-serif text-xl mb-8">門店資訊</h4>
-                <ul class="space-y-4 text-sm opacity-80 font-light">
-                    <li> 台北總店: 台北市信義區松仁路36號1樓 週一至週日 11:30 - 20:30</li>
-                    <li> 板橋分店: 新北市板橋區板橋車站 週一至週日 11:30 - 20:30</li></li>
-                </ul>
-            </div>
-            
-        </div>
     </footer>
 
-    <!-- 初始化腳本 -->
+    <!-- JavaScript for Navbar Scroll Effect & Carousel -->
     <script>
+        const navbar = document.getElementById('navbar');
+        const navLinks = navbar.querySelectorAll('a, button');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // 往下滾動時：白底、深色字、加陰影
+                navbar.classList.remove('text-white', 'border-transparent');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'text-brand-text', 'border-gray-100', 'shadow-sm');
+            } else {
+                // 在頂部時：透明底、白色字
+                navbar.classList.add('text-white', 'border-transparent');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'text-brand-text', 'border-gray-100', 'shadow-sm');
+            }
+        });
         // 初始化 AOS
         AOS.init({
             duration: 1000,
@@ -596,7 +563,6 @@
         });
 
         // 導航欄捲動效果
-        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -646,6 +612,7 @@
                 heroVideo.play().catch(() => { });
             });
         }
+
     </script>
 </body>
 
