@@ -60,12 +60,18 @@
             --accent-gold: #FFB380;
         }
 
-        body {
+        .fixed-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
             background: 
                 url('resource/image/background/wave.svg') repeat center center,
                 linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
-            background-attachment: fixed;
-            background-size: 100% 100%, cover;
+            background-size: cover;
+            pointer-events: none;
+        }
+
+        body {
             position: relative;
             min-height: 100vh;
         }
@@ -93,16 +99,12 @@
             overflow: hidden;
             border-radius: 8px;
             position: relative;
-            box-shadow: inset 0 0 25px #C5A059;
+            border: 1px solid rgba(197, 160, 89, 0.3);
         }
 
         .img-container::after {
             content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 8px;
-            box-shadow: inset 0 0 25px #C5A059;
-            pointer-events: none;
+            display: none;
         }
 
         /* 輪播樣式 */
@@ -269,6 +271,9 @@
 
 <body class="bg-brand-bg text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
 
+    <!-- 固定背景層 -->
+    <div class="fixed-bg"></div>
+
     <!-- 懸浮式導航欄 -->
     <nav id="navbar"
         class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center opacity-0">
@@ -418,8 +423,8 @@
 
                 <!-- 圖片 1 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[3/4] bg-gray-100">
-                        <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙"
+                    <div class="img-container aspect-[3/4]">
+                        <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -432,8 +437,8 @@
 
                 <!-- 圖片 2 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="img-container aspect-[4/5] bg-gray-100">
-                        <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹"
+                    <div class="img-container aspect-[4/5]">
+                        <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -447,8 +452,8 @@
 
                 <!-- 圖片 3 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[3/4] bg-gray-100">
-                        <img src="resource/image/prd/prd_fullmarks.png" alt="滿分"
+                    <div class="img-container aspect-[3/4]">
+                        <img src="resource/image/prd/prd_fullmarks.png" alt="滿分" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -462,8 +467,8 @@
 
                 <!-- 圖片 4 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[4/5] bg-gray-100">
-                        <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
+                    <div class="img-container aspect-[4/5]">
+                        <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -477,8 +482,8 @@
 
                 <!-- 圖片 5 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="img-container aspect-[3/4] bg-gray-100">
-                        <img src="resource/image/prd/prd_adlay.png"" alt=" 薏仁燕麥"
+                    <div class="img-container aspect-[3/4]">
+                        <img src="resource/image/prd/prd_adlay.png" alt="薏仁燕麥" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -492,8 +497,8 @@
 
                 <!-- 圖片 6 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[4/5] bg-gray-100">
-                        <img src="resource/image/prd/prd_dumpling.png" alt="湯圓"
+                    <div class="img-container aspect-[4/5]">
+                        <img src="resource/image/prd/prd_dumpling.png" alt="湯圓" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -521,8 +526,8 @@
 
                 <!-- 圖片 1 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[3/4] bg-gray-100">
-                        <img src="resource/image/material/material_lotusroot2.png" alt="蓮藕"
+                    <div class="aspect-[3/4]">
+                        <img src="resource/image/material/material_lotusroot2.webp" alt="蓮藕" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -535,22 +540,22 @@
 
                 <!-- 圖片 2 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="img-container aspect-[4/5] bg-gray-100">
-                        <img src="resource/image/material/material_lotusseeds.png" alt="蓮子"
+                    <div class="aspect-[4/5]">
+                        <img src="resource/image/material/material_lotusseeds.webp" alt="蓮子"  
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
-                            銀耳</h3>
+                            蓮子</h3>
                         <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: 蓮子xxx)</p>
                     </div>
                 </div>
 
                 <!-- 圖片 3 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[3/4] bg-gray-100">
-                        <img src="resource/image/material/material_yam.png" alt="地瓜"
+                    <div class="aspect-[3/4]">
+                        <img src="resource/image/material/material_yam.webp" alt="地瓜"  
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -563,8 +568,8 @@
 
                 <!-- 圖片 4 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[4/5] bg-gray-100">
-                        <img src="resource/image/material/material_avocado.png" alt="酪梨"
+                    <div class="aspect-[4/5]">
+                        <img src="resource/image/material/material_avocado.png" alt="酪梨"  
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -577,8 +582,8 @@
 
                 <!-- 圖片 5 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="img-container aspect-[3/4] bg-gray-100">
-                        <img src="resource/image/material/material_potato.png"" alt=" 地瓜豆"
+                    <div class="aspect-[3/4]">
+                        <img src="resource/image/material/material_potato.webp" alt="地瓜豆"  
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -591,8 +596,8 @@
 
                 <!-- 圖片 6 -->
                 <div class="group cursor-pointer">
-                    <div class="img-container aspect-[4/5] bg-gray-100">
-                        <img src="resource/image/material/material_purplerice.png" alt="紫米"
+                    <div class="aspect-[4/5]">
+                        <img src="resource/image/material/material_purplerice.webp" alt="紫米" 
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="mt-4 text-center">
@@ -602,10 +607,7 @@
                         <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字)</p>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </section>
 
