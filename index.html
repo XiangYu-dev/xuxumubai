@@ -4,19 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>煦煦木白 | 新精緻甜品</title>
 
-    <!-- 引入 Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>煦煦木白 | 東方甜品・台北信義・板橋</title>
 
-    <!-- 引入 AOS 動畫庫 -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SEO 基本 meta -->
+    <meta name="description" content="煦煦木白——取法四時鮮物，以慢火細熬時光。東方甜品・糖水專門店，台北信義區、板橋門市，週一至週日 11:30–20:30。">
+    <meta name="keywords" content="東方甜品,糖水,台北甜品,信義甜品,板橋甜品,紅豆沙,銀耳蓮子,煦煦木白">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xuxumubai.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xuxumubai.com/">
+    <meta property="og:title" content="煦煦木白 | 東方甜品・台北信義・板橋">
+    <meta property="og:description" content="取法四時鮮物，以慢火細熬時光。煦煦木白東方甜品，台北信義區、板橋門市。">
+    <meta property="og:image" content="https://xuxumubai.com/resource/image/brand/brandimage.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="煦煦木白">
+    <meta property="og:locale" content="zh_TW">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="煦煦木白 | 東方甜品・台北信義・板橋">
+    <meta name="twitter:description" content="取法四時鮮物，以慢火細熬時光。煦煦木白東方甜品，台北信義區、板橋門市。">
+    <meta name="twitter:image" content="https://xuxumubai.com/resource/image/brand/brandimage.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resource/image/info/Logo.png">
+    <link rel="apple-touch-icon" href="resource/image/info/Logo.png">
+
+    <!-- JSON-LD 結構化資料：LocalBusiness（甜品店） -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "煦煦木白",
+      "alternateName": "xuxumubai",
+      "description": "取法四時鮮物，以慢火細熬時光。東方甜品・糖水專門店。",
+      "url": "https://xuxumubai.com/",
+      "image": "https://xuxumubai.com/resource/image/brand/brandimage.png",
+      "logo": "https://xuxumubai.com/resource/image/info/Logo.png",
+      "sameAs": [
+        "https://www.instagram.com/xuxumu.bai/"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "煦煦木白 台北總店",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "松仁路36號1樓",
+            "addressLocality": "信義區",
+            "addressRegion": "台北市",
+            "addressCountry": "TW"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "11:30",
+              "closes": "20:30"
+            }
+          ]
+        },
+        {
+          "@type": "Place",
+          "name": "煦煦木白 板橋分店",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "板橋車站",
+            "addressLocality": "板橋區",
+            "addressRegion": "新北市",
+            "addressCountry": "TW"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "11:30",
+              "closes": "20:30"
+            }
+          ]
+        }
+      ],
+      "servesCuisine": "東方甜品・糖水",
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- Tailwind CSS（本地化，由 Tailwind CLI standalone 產出） -->
+    <link rel="stylesheet" href="resource/css/tailwind.min.css">
+
+    <!-- AOS 動畫庫（本地化，v2.3.1） -->
+    <link href="resource/vendor/aos/aos.css" rel="stylesheet">
+    <script src="resource/vendor/aos/aos.js"></script>
 
     <!-- 引入 Google Fonts: 標題用襯線體，內文用無襯線體 -->
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400&family=Zhi+Mang+Xing&display=swap"
         rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind 自訂色票與字體已遷移至 tailwind.config.js，由 CLI 編譯進 resource/css/tailwind.min.css -->
 
     <style>
         :root {
@@ -24,260 +120,326 @@
             --bg-gradient: linear-gradient(135deg, #F5F0E8 0%, #D8D0C4 100%);
             --text-main: #333333;
             --accent-red: #A62121;
-            --accent-gold: #C5A059;
+            --accent-gold: #FFB380;
+        }
+
+        .fixed-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: 
+                url('resource/image/background/wave.svg') repeat center center,
+                linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
+            background-size: cover;
+            pointer-events: none;
         }
 
         body {
-            background: linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
-            background-attachment: fixed;
-            background-position: center center;
             position: relative;
             min-height: 100vh;
         }
 
-        /* 水彩紙紋理層 */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.2;
-            mix-blend-mode: overlay;
-            pointer-events: none;
-            z-index: -1;
+        /* 隱藏捲軸但保持可滾動 (優化視覺) */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .font-serif {
-            font-family: 'Noto Serif TC', serif;
+        ::-webkit-scrollbar-track {
+            background: #F9F8F6;
         }
 
-        .font-calligraphy {
-            font-family: 'Zhi Mang Xing', cursive;
+        ::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 4px;
         }
 
-        /* 豎排文字樣式 */
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            letter-spacing: 0.5em;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A38B71;
         }
 
-        /* 導航欄捲動效果 */
-        nav.scrolled {
-            background-color: rgba(249, 247, 242, 0.95);
-            backdrop-filter: blur(10px);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        /* 圖片容器防溢出設定 */
+        .img-container {
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            border: 1px solid rgba(197, 160, 89, 0.3);
         }
 
-        /* 自定義按鈕 hover */
-        .btn-oriental {
+        /* 漸層邊框效果 */
+        .img-gradient-border {
             position: relative;
             overflow: hidden;
-            transition: all 0.5s ease;
-            border: 1px solid var(--text-main);
+            padding: 12px;
+            background: linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
+            border-radius: 16px;
         }
 
-        .btn-oriental:hover {
-            color: white;
-            background-color: var(--accent-red);
-            border-color: var(--accent-red);
+        .img-gradient-border img {
+            border-radius: 8px;
+            display: block;
         }
 
-        /* 圖片微縮放效果 */
-        .hover-scale img {
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        .img-container::after {
+            content: '';
+            display: none;
         }
 
-        .hover-scale:hover img {
-            transform: scale(1.08);
+        /* 輪播樣式 */
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
-        /* 自定義產品卡片樣式 */
-        .product-card {
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .carousel-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .footer-row {
             display: flex;
-            flex-direction: column;
-            height: 100%;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
         }
 
-        .product-grid {
-            max-width: 80rem;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 2rem;
+        .w-50 {
+            width: 50%;
         }
 
-        @media (min-width: 768px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .p-t-10 {
+            padding-top: 10%;
         }
 
-        @media (min-width: 1024px) {
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .nvabar-text {
+            /* 參考 Adobe Fonts 或 CDNFonts 的字體名稱 */
+            font-family: "HOT-Gyoshokk", "Kouran Gyosho", cursive;
         }
 
-        #Ingredients {
-            min-height: 100vh;
-        }
-
-        #Ingredients .absolute {
-            z-index: 0;
-        }
-
-        #Ingredients .relative {
-            z-index: 1;
-        }
-
-        /* 漢堡選單 */
+        /* 漢堡按鈕樣式 */
         .mobile-menu-btn {
             width: 30px;
-            height: 24px;
+            height: 20px;
             position: relative;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .mobile-menu-btn span {
             display: block;
-            position: absolute;
-            height: 2px;
             width: 100%;
-            background: var(--text-main);
+            height: 2px;
+            background-color: #333;
+            transition: all 0.3s ease;
             border-radius: 2px;
-            opacity: 1;
-            left: 0;
-            transform: rotate(0deg);
-            transition: .25s ease-in-out;
-        }
-
-        .mobile-menu-btn span:nth-child(1) {
-            top: 0;
-        }
-
-        .mobile-menu-btn span:nth-child(2) {
-            top: 11px;
-        }
-
-        .mobile-menu-btn span:nth-child(3) {
-            top: 22px;
         }
 
         .mobile-menu-btn.active span:nth-child(1) {
-            top: 11px;
-            transform: rotate(135deg);
+            transform: translateY(9px) rotate(45deg);
         }
 
         .mobile-menu-btn.active span:nth-child(2) {
             opacity: 0;
-            left: -60px;
         }
 
         .mobile-menu-btn.active span:nth-child(3) {
-            top: 11px;
-            transform: rotate(-135deg);
+            transform: translateY(-9px) rotate(-45deg);
         }
 
+        /* 手機/桌面下拉選單樣式（方案 A：卡片式下拉面板 + 毛玻璃 + 圓角 + 輕柔棕金陰影） */
         .mobile-dropdown {
             position: absolute;
-            top: 100%;
-            left: 0;
             right: 0;
-            background: rgba(249, 247, 242, 0.98);
+            top: 100%;
+            width: min(72vw, 300px);
+            /* 毛玻璃半透明暖米白底；不支援 backdrop-filter 時退回不透明暖米白 */
+            background: #F9F8F6;
+            background: rgba(249,248,246,.85);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            border: 1px solid rgba(163,139,113,.2);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(163,139,113,.15);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 20px 0;
+            font-size: 18px;
+            /* 初始隱藏狀態 */
+            transform: translateX(100%);
             opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .mobile-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
+        /* 連結項目：加大點擊區塊（觸控友善 ≥44px），極淡分隔線區隔 */
         .mobile-dropdown a {
-            display: block;
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px 24px;
+            border-bottom: 1px solid rgba(163,139,113,.08);
+        }
+        .mobile-dropdown a:last-child {
+            border-bottom: none;
         }
 
-        .mobile-dropdown a:hover {
-            background: var(--accent-red);
-            color: white;
-            padding-left: 2.5rem;
+        /* 手機版：維持 min(72vw,300px) 自適應寬度 */
+        @media (max-width: 767px) {
+            .mobile-dropdown {
+                width: min(72vw, 300px);
+            }
         }
 
-        .material-h {
-            height: 234.73px
+        /* 桌面版：下拉選單樣式——定位/動畫方向保持 translateY，只更新視覺屬性 */
+        @media (min-width: 768px) {
+            .mobile-dropdown {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 220px;
+                height: auto;
+                background: #F9F8F6;
+                background: rgba(249,248,246,.85);
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(163,139,113,.2);
+                border-radius: 16px;
+                transform: translateY(10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                box-shadow: 0 8px 30px rgba(163,139,113,.15);
+                padding: 16px 0;
+                gap: 0;
+            }
         }
 
-        .font-center {
-            align-self: center;
+        /* 選單展開狀態 - 淡入顯示 */
+        .mobile-dropdown.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-dropdown.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        /* 隱藏時的過渡效果 */
+        .mobile-dropdown:not(.active) {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* prefers-reduced-motion：尊重使用者系統動效偏好 */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            /* Hero 影片靜止：直接顯示 poster 圖 */
+            #heroVideo {
+                display: none;
+            }
+
+            #heroBgimage {
+                opacity: 1 !important;
+            }
         }
     </style>
 </head>
 
-<body>
+<body class="bg-brand-bg text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- 固定背景層 -->
+    <div class="fixed-bg"></div>
 
     <!-- 懸浮式導航欄 -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center">
-        <img src="resource/LOGO_N.png" alt="煦煦木白" class="h-12 md:h-16">
-        <div class="hidden md:flex space-x-12 text-sm tracking-widest opacity-80 font-light">
-            <a href="#home" class="hover:text-[var(--accent-red)] transition-colors">首頁</a>
-            <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
-            <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
-            <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-        </div>
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center opacity-0">
+        <img src="resource/image/info/Logo.png" alt="煦煦木白 品牌標誌" class="h-12 md:h-16">
         <div class="md:relative">
-            <div class="mobile-menu-btn md:hidden" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="mobile-dropdown" id="mobileDropdown">
-                <a href="#home" class="hover:text-[var(--accent-red)] transition-colors">首頁</a>
-                <a href="#story" class="hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
-                <a href="#products" class="hover:text-[var(--accent-red)] transition-colors">精選點心</a>
-                <a href="#contact" class="hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-            </div>
+            <button type="button" class="mobile-menu-btn" id="menuToggle"
+                aria-label="開啟導覽選單"
+                aria-expanded="false"
+                aria-controls="mobileDropdown">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+        <!-- 手機版/桌面版下拉選單 -->
+        <div id="mobileDropdown" class="mobile-dropdown">
+            <a href="#brand-story" class="text-black hover:text-brand-gold transition-colors">品牌故事</a>
+            <a href="#portfolio" class="text-black hover:text-brand-gold transition-colors">精選甜品</a>
+            <a href="#ingredients" class="text-black hover:text-brand-gold transition-colors">嚴選食材</a>
+            <a href="#contact" class="text-black hover:text-brand-gold transition-colors">門店資訊</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id='home' class='relative h-screen flex items-center justify-center overflow-hidden'>
+    <!--  Section-->
+    <header class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
         <!-- 背景影片 -->
         <video id='heroVideo' class='absolute inset-0 w-full h-full object-cover transition-opacity duration-1000'
-            style='opacity: 1' autoplay muted playsinline>
+            style='opacity: 1' autoplay muted playsinline
+            poster='resource/image/brand/brandimage.png'>
             <source src='resource/video/lakedemo.mp4' type='video/mp4'>
         </video>
 
         <!-- 半透明遮罩 -->
-        <div class='absolute inset-0 bg-black/20'></div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
         <!-- 背景圖片（影片停格後顯示） -->
-        <div class='absolute inset-0 z-0 transition-opacity duration-1000' id='heroBgImage' style='opacity: 0'>
-            <img src='resource/Image/brand/brandimage.png' class='w-full h-full object-cover opacity-50' alt='hero-bg'>
+        <div class='absolute inset-0 z-0 transition-opacity duration-1000' id='heroBgimage' style='opacity: 0'>
+            <img src='resource/image/brand/brandimage.png' class='w-full h-full object-cover' alt='煦煦木白東方甜品形象圖'>
         </div>
 
+
         <!-- 文字內容 -->
-        <div class='relative z-10 flex flex-col md:flex-row items-center gap-12 px-6' id='heroContent'
-            style='opacity: 0; transition: opacity 1s ease 0.5s'>
-            <h1 class='vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter'
-                data-aos='fade-right' data-aos-duration='1500'>
+        <div id="herotext-range" class='relative z-10 flex flex-col md:flex-row items-center gap-12 px-6'
+            id='heroContent' style='opacity: 0; transition: opacity 1s ease 0.5s'>
+            <h1 id='heroTitle'
+                class='vertical-text text-5xl md:text-7xl font-serif font-bold leading-none tracking-tighter'
+                style='opacity: 0; transform: translateX(-30px); transition: all 0.8s ease'>
                 東方甜品，<br><span class='text-[var(--accent-red)]'>詩意呈現。</span>
             </h1>
-            <div class='max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24' data-aos='fade-up'
-                data-aos-delay='500'>
+            <div id='heroSubtitle' class='max-w-xs text-sm leading-loose opacity-70 mt-8 md:mt-24'
+                style='opacity: 0; transform: translateX(-30px); transition: all 0.8s ease'>
                 <p>取法自然，以四時之物入饌。<br>東方生活美學<br>在繁瑣的日常中，尋得一份純粹的甘甜。</p>
             </div>
         </div>
@@ -286,307 +448,375 @@
         <div class='absolute bottom-12 right-12 font-calligraphy text-4xl text-[var(--accent-red)] opacity-40'>
 
         </div>
-    </section>
+    </header>
 
+    <!-- section1. Brand Story (品牌故事) -->
+    <section id="brand-story"
+        class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
+        <!-- 背景圖片 -->
+        <div class="absolute inset-0">
+            <img src="resource/image/info/入會禮券圖.png" alt="煦煦木白品牌故事背景——入會禮券" class="w-full h-full object-cover" loading="lazy">
+        </div>
 
-    <!-- 品牌故事 Section -->
-    <section id="story" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- 背景視頻 -->
-        <!-- <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
-            <source src="resource/zooTrain.mp4" type="video/mp4">
-        </video> -->
+        <!-- 暗化遮罩 -->
+        <div class="absolute inset-0 bg-black/40"></div>
 
-        <!-- 半透明遮罩 -->
-        <div class="absolute inset-0 bg-black/20"></div>
-
-        <!-- 品牌故事內容 -->
-        <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center px-8 md:px-24">
-            <div class="order-2 md:order-1 relative" data-aos="fade-up">
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="resource/Image/brand/brandimage4.PNG" class="w-full" alt="story">
-                </div>
-                <div
-                    class="absolute -bottom-8 -right-8 w-48 h-48 bg-[var(--accent-gold)]/10 -z-10 rounded-full blur-2xl">
-                </div>
-            </div>
-
-            <div class="order-1 md:order-2 space-y-8 text-white" data-aos="fade-left">
-                <h2 class="text-3xl font-serif font-bold border-l-4 border-[var(--accent-red)] pl-6">((品牌口號 ex:煦經典)</h2>
-                <p class="text-lg leading-loose opacity-90 font-light">
-                    (品牌文字: ex「煦煦木白」保留了傳統粵式糖水的溫潤靈魂，並融入當代極簡的美學視覺。)
-                </p>
-                <div class="grid grid-cols-2 gap-8 pt-6">
-                    <div>
-                        <h4 class="font-serif font-bold text-[var(--accent-gold)] mb-2 text-xl">古法煮製</h4>
-                        <p class="text-sm opacity-70">嚴選在地小農作物，堅持每日六小時慢火細熬。</p>
-                    </div>
-                    <div>
-                        <h4 class="font-serif font-bold text-[var(--accent-gold)] mb-2 text-xl">低糖配方</h4>
-                        <p class="text-sm opacity-70">以健康為核心，減輕負擔，只留下食材本真清甜。</p>
-                    </div>
-                </div>
-            </div>
+        <!-- 文字內容 -->
+        <div class="relative z-10 text-white px-6 max-w-3xl">
+            <span class="font-sans text-sm tracking-[0.3em] uppercase mb-4 block opacity-80">Brand Story</span>
+            <p class="font-serif text-xl md:text-2xl tracking-wider leading-relaxed">
+                煦煦，是晨光初暖；木白，是質樸本真。我們取四時鮮物入饌，以慢火細熬時光，讓每一碗甜品都盛著自然的溫柔。願這份純粹的甘甜，成為你日常裡最柔軟的片刻。
+            </p>
         </div>
     </section>
 
-
-    <section id="about" class="py-24 px-6 md:px-16 max-w-7xl mx-auto">
-        <!-- 區塊 1： -->
+    <!--section2. 經典產品介紹-->
+    <section id="about" class="py-24 md:py-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <!-- 區塊 1 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh]">
-                <img src="resource/Image/brand/brandimage2.PNG" alt=""
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-4 border border-white/40 pointer-events-none"></div>
-            </div>
-
-            <div class="cat_text flex flex-col justify-center py-8 md:py-0">
-                <div class="cat_icon mb-6">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-accent" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6c.5 0 1.5.5 2 1.5S15 8.5 15 10c0 1.5-1.5 3-3 3s-3 1.5-3 3 1.5 3 3 3 3-1.5 3-3c0-1.5 1-2.5 1.5-3s1.5-1.5 2-1.5M12 6c-.5 0-1.5.5-2 1.5S9 8.5 9 10c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3c0 1.5-1 2.5-1.5 3S6 14.5 5 14.5" />
-                    </svg> -->
-                </div>
-                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">Our Concept</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">手作糖水的匠心</h2>
-                <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>保留了傳統粵式糖水的溫潤靈魂</p>
-                    <p>融入當代極簡的美學視覺。</p>
-                </div>
+            <div class="cat_img relative group h-[50vh] md:h-[70vh] md:order-1">
+                <img src="resource/image/others/nourishing.png" alt="糖水"
+                    class="w-full h-full object-cover rounded-[10%] transition-transform duration-700 group-hover:scale-105" loading="lazy">
             </div>
         </div>
+        <div class="mt-16 md:mt-24"></div>
 
-        <!-- 區塊 2：下午茶 (預留，未來補上素材) -->
+        <!-- 區塊2 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh] md:order-2">
-                <div class="w-full h-full bg-brand-accent/10 flex items-center justify-center">
-                    <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
-                            src="resource/Image/brand/brandimage.png"></span>
+            <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-2 md:w-1/2 w-[80%] mx-auto md:ml-auto">
+                <div class="w-full h-full flex items-center justify-center">
+                    <img src="resource/image/brand/brandimage3.PNG" class="rounded-[10%] w-full h-full object-cover"
+                        alt="夏日限定・鮮果慢釀甜品" loading="lazy">
                 </div>
             </div>
 
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-1">
-                <div class="cat_icon mb-6">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-accent" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6c.5 0 1.5.5 2 1.5S15 8.5 15 10c0 1.5-1.5 3-3 3s-3 1.5-3 3 1.5 3 3 3 3-1.5 3-3c0-1.5 1-2.5 1.5-3s1.5-1.5 2-1.5M12 6c-.5 0-1.5.5-2 1.5S9 8.5 9 10c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3c0 1.5-1 2.5-1.5 3S6 14.5 5 14.5" />
-                    </svg> -->
-                </div>
-                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">Tea Time</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">美好時光</h2>
+
+                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">夏日限定・鮮果慢釀</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>天然紅薯、紫米與蓮藕等大地恩賜</p>
-                    <p>療癒心靈的精緻養生甜品</p>
+                    <p>精選當令酪梨與紅芭樂，以低溫慢釀鎖住果香，不添贅飾，只留一口清爽回甘，是屬於盛夏的輕盈滋味。</p>
                 </div>
             </div>
         </div>
-         <!-- 區塊 3： -->
+        <div class="mt-16 md:mt-24"></div>
+
+        <!-- 區塊3-->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img img-container relative group h-[50vh] md:h-[70vh]">
-                <img src="resource/Image/brand/brandimage4.PNG" alt=""
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-4 border border-white/40 pointer-events-none"></div>
+            <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-1 md:w-1/2 w-[80%] mx-auto md:ml-auto">
+                <div class="w-full h-full flex items-center justify-center">
+                    <img src="resource/image/brand/brandimage4.PNG" class="rounded-[10%] w-full h-full object-cover"
+                        alt="四時鮮飲・入口生津甜品" loading="lazy">
+                </div>
             </div>
 
-            <div class="cat_text flex flex-col justify-center py-8 md:py-0">
-                <div class="cat_icon mb-6">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-accent" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6c.5 0 1.5.5 2 1.5S15 8.5 15 10c0 1.5-1.5 3-3 3s-3 1.5-3 3 1.5 3 3 3 3-1.5 3-3c0-1.5 1-2.5 1.5-3s1.5-1.5 2-1.5M12 6c-.5 0-1.5.5-2 1.5S9 8.5 9 10c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-3-3-3-3 1.5-3 3c0 1.5-1 2.5-1.5 3S6 14.5 5 14.5" />
-                    </svg> -->
-                </div>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字)</h2>
+            <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-2">
+
+                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">四時系列</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">四時鮮飲・入口生津</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>(形象風格文字)</p>
+                    <p>順應時令採摘，以鮮果本味調飲，層層果韻在唇齒間舒展，為忙碌的日子斟上一份自然的清涼與甘美。</p>
                 </div>
             </div>
+
         </div>
 
-        <!-- 區塊5 -->
-        <!--  -->
     </section>
 
 
 
-    <!-- 產品展示 Section -->
-    <section id="products" class="py-32 px-8">
-        <div class="text-center" data-aos=fade-up>
-            <span class="text-[var(--accent-red)] tracking-[0.5em] text-sm mb-4 block uppercase font-bold"></span>
-            <h2 class="text-4xl" font-serif font-bold>精選點心</h2>
-        </div>
+    <!-- Section4 商品 -->
+    <section id="portfolio" class="py-24">
 
-        <div class="product-grid">
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/prd/prd_redbeansoup.png" alt="紅豆沙" style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">桂花紅豆沙</h3>
-                <p class="text-sm mt-3 opacity-70 leading-relaxed font-center">(介紹文字: 紅豆綿密、陳皮清香，暖心又順口)</p>
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+           
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">精選甜品</h2>
+                <p class="font-sans text-sm tracking-widest text-brand-text/60 uppercase"></p>
             </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=200>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/prd/prd_fungus.png" alt="銀耳" style="width: 100%;  object-fit: cover">
+            <!-- 網格佈局 (大螢幕時中間列下移，營造錯落感) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+
+                <!-- 圖片 1 -->
+                <div class="group cursor-pointer">
+                    <div class="img-gradient-border aspect-[3/4]">
+                        <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            桂花紅豆沙</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">紅豆綿密軟糯，佐以桂花與陳皮，暖心順口，一勺暖到心底</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">銀耳蓮子羹</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">銀耳、紅棗、枸杞，最純粹的溫柔滋養</p>
-            </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=400>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/prd/prd_fullmarks.png" alt="滿分" style="width: 100%;  object-fit: cover">
+                <!-- 圖片 2 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="img-gradient-border aspect-[4/5]">
+                        <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            銀耳蓮子羹</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">銀耳滑潤、蓮子清香，紅棗枸杞相佐，最純粹的溫柔滋養</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">滿分</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字, ex: 經典配料的圓滿組合，一碗就滿足)</p>
-            </div>
 
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
-                        style="width: 100%;  object-fit: cover">
+                <!-- 圖片 3 -->
+                <div class="group cursor-pointer">
+                    <div class="img-gradient-border aspect-[3/4]">
+                        <img src="resource/image/prd/prd_fullmarks.png" alt="滿分"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            滿分</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">經典配料圓滿相聚，層次豐盈，一碗即是恰到好處的滿足</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">地瓜豆類拼盤</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字, ex: 地瓜的柔滑口感，一口就是幸福)</p>
-            </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=300>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/prd/prd_ adlay.png" alt="薏仁燕麥" style="width: 100%;  object-fit: cover">
+                <!-- 圖片 4 -->
+                <div class="group cursor-pointer">
+                    <div class="img-gradient-border aspect-[4/5]">
+                        <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            地瓜豆類拼盤</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">綿滑地瓜與時令豆類同盛，質樸香甜，一口便是踏實的幸福</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">薏仁燕麥</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字 ex: 薏仁與燕麥的完美結合，營養又健康)</p>
-            </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=500>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/prd/prd_dumpling.png" alt="湯圓" style="width: 100%;  object-fit: cover">
+                <!-- 圖片 5 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="img-gradient-border aspect-[3/4]">
+                        <img src="resource/image/prd/prd_adlay.png" alt="薏仁燕麥"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            薏仁燕麥</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">薏仁與燕麥細火同熬，清潤不膩，營養與美味兼得</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">湯圓</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- 原料展示 Section -->
-    <section id="material" class="px-8">
-        <div class="text-center" data-aos=fade-up>
-            <span class="text-[var(--accent-red)] tracking-[0.5em] text-sm mb-4 block uppercase font-bold"></span>
-            <h2 class="text-4xl" font-serif font-bold>嚴選原料</h2>
-        </div>
-
-        <div class="product-grid">
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img class="material-h" src="resource/Image/material/material_lotusroot2.PNG" alt="紅豆沙"
-                        style="width: 100%;  object-fit: cover">
+                <!-- 圖片 6 -->
+                <div class="group cursor-pointer">
+                    <div class="img-gradient-border aspect-[4/5]">
+                        <img src="resource/image/prd/prd_dumpling.png" alt="湯圓"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            湯圓</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">手作圓潤湯圓，外Q內軟，甜在心頭，圓滿每一刻團聚</p>
+                    </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold font-center">蓮藕</h3>
-                <p class="text-sm mt-3 opacity-70 leading-relaxed font-center">(介紹文字: Ex: 蓮藕清甜爽脆，營養豐富)</p>
-            </div>
 
-            <div class="product-card group" data-aos=fade-up data-aos-delay=200>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/material/material_lotusseeds.png" alt="銀耳"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">蓮子</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字: )</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=400>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img class="material-h" src="resource/Image/material/material_avocado.png" alt="滿分"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">酪梨</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/material/material_potato.png" alt="芋見"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">地瓜豆</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=300>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/material/material_purplerice.png" alt="薯薯"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">紫米</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
-            </div>
-
-            <div class="product-card group" data-aos=fade-up data-aos-delay=500>
-                <div class="rounded-2xl" overflow-hidden mb-4 shadow-sm>
-                    <img src="resource/Image/material/material_yam.png" alt="湯圓"
-                        style="width: 100%;  object-fit: cover">
-                </div>
-                <h3 class="font-serif text-xl font-bold font-center">地瓜?</h3>
-                <p class="text-sm opacity-50 mt-1 italic tracking-widest font-center">(介紹文字)</p>
             </div>
         </div>
     </section>
 
-    <!-- info Section -->
-    <section id="about-us" class="py-16 px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- Section5 原料 -->
+    <section id="ingredients" class="py-24">
+        <div class="max-w-7xl mx-auto px-6 md:px-16">
+            <div class="text-center">
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">嚴選食材</h2>
+                <p class="font-sans text-sm tracking-widest text-brand-text/60 uppercase"></p>
+            </div>
 
-                <!-- 左側：圖片區塊 -->
-                <div class="flex flex-col gap-4">
-                    <img src="resource/Image/info/Logo.png" alt="煦煦木白" class="w-full max-w-md">
-                    <!-- <img src="resource/Image/info/Logo.png" alt="Logo" class="w-32"> -->
+            <!-- 網格佈局 (大螢幕時中間列下移，營造錯落感) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+
+                <!-- 圖片 1 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4]">
+                        <img src="resource/image/material/material_lotusroot-rb.webp" alt="蓮藕"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            蓮藕</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">清甜爽脆，粉糯回甘，蘊藏土地的溫潤養分</p>
+                    </div>
                 </div>
 
-                <!-- 右側：文字 + 社群 -->
-                <div class="space-y-6">
+                <!-- 圖片 2 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="aspect-[4/5]">
+                        <img src="resource/image/material/material_lotusseeds.webp" alt="蓮子"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            蓮子</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">顆顆飽滿清香，入口綿密，靜養身心的自然之選</p>
+                    </div>
+                </div>
 
-                    <!-- IG 連結（請補上連結） -->
-                    <span>Instagram</span>
-                    <a href="#"
-                        class="inline-flex items-center gap-2 text-[var(--accent-red)] hover:opacity-70 transition-opacity">
-                      
-                        <span>(連結)</span>
-                    </a>
+                <!-- 圖片 3 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[3/4]">
+                        <img src="resource/image/material/material_yam.webp" alt="地瓜"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            地瓜</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">柔滑鬆軟、天然回甜，樸實中藏著飽滿的暖意</p>
+                    </div>
+                </div>
 
-                    <!-- Line QRCode -->
-                    <!-- <div class="flex items-center gap-4">
-                        <span class="text-sm opacity-70">加入 LINE 好友</span>
-                        <img src="resource/Image/info/LineQRCode.png" alt="Line QRCode" class="w-24 h-24">
+                <!-- 圖片 4 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[4/5]">
+                        <img src="resource/image/material/material_avocado.png" alt="酪梨"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            酪梨</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">綿密滑順、油潤生香，是果實裡最溫柔的豐盈</p>
+                    </div>
+                </div>
 
-                    </div> -->
+                <!-- 圖片 5 (錯落位移) -->
+                <div class="group cursor-pointer md:mt-16">
+                    <div class="aspect-[3/4]">
+                        <img src="resource/image/material/material_potato.webp" alt="地瓜豆"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            地瓜豆</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">小巧圓潤、口感細緻，粒粒是田間細心揀選的鮮甜</p>
+                    </div>
+                </div>
+
+                <!-- 圖片 6 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[4/5]">
+                        <img src="resource/image/material/material_purplerice.webp" alt="紫米"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3
+                            class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
+                            紫米</h3>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">色澤深潤、米香醇厚，慢煮成一碗溫熱的樸實滋味</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="text-stone-800 px-8" style="background: linear-gradient(180deg, #FFF9F2 0%, #F5E6D3 100%); min-height: 160px; position: relative;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); opacity: 0.15; mix-blend-mode: overlay; pointer-events: none;"></div>
-        
-        <div class="max-w-7xl mx-auto flex items-center" style="position: relative; z-index: 1; min-height: 160px;">
-            
-            <div data-aos="fade-up" data-aos-delay="200">
-                <h4 class="font-serif text-xl mb-8">門店資訊</h4>
-                <ul class="space-y-4 text-sm opacity-80 font-light">
-                    <li> 台北總店: 台北市信義區松仁路36號1樓 週一至週日 11:30 - 20:30</li>
-                    <li> 板橋分店: 新北市板橋區板橋車站 週一至週日 11:30 - 20:30</li></li>
-                </ul>
+    <!-- Footer / Contact (聯絡資訊) -->
+    <footer id="contact" class="bg-brand-bg pt-20 pb-12 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+
+            <!-- 連結列 -->
+            <div data-aos="fade-up" data-aos-delay="200"
+                class="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
+                <!-- 右側：門店資訊 -->
+                <div class="text-center">
+                    <h4 class="font-serif text-xl mb-8">門店資訊</h4>
+                    <ul class="space-y-4 text-sm opacity-80 font-light">
+                        <li>
+                            台北總店：
+                            <a href="https://maps.google.com/?q=台北市信義區松仁路36號1樓"
+                               target="_blank" rel="noopener noreferrer"
+                               class="underline underline-offset-2 hover:text-brand-gold transition-colors"
+                               aria-label="在 Google 地圖查看台北總店位置">台北市信義區松仁路36號1樓</a>
+                            <br>週一至週日 11:30 - 20:30
+                        </li>
+                        <li>
+                            板橋分店：
+                            <a href="https://maps.google.com/?q=新北市板橋區板橋車站"
+                               target="_blank" rel="noopener noreferrer"
+                               class="underline underline-offset-2 hover:text-brand-gold transition-colors"
+                               aria-label="在 Google 地圖查看板橋分店位置">新北市板橋區板橋車站</a>
+                            <br>週一至週日 11:30 - 20:30
+                        </li>
+                    </ul>
+                </div>
             </div>
-            
         </div>
+        <div class="max-w-4xl mx-auto px-6 text-center p-t-10">
+
+
+            <!-- 社群圖示 -->
+            <div class="flex justify-center items-center gap-10 mb-10">
+                <!-- LINE：QR Code（桌機掃描用）+ 可點擊連結（手機用） -->
+                <div class="flex flex-col items-center gap-2">
+                    <img src="resource/image/info/LineQRCode.png" alt="煦煦木白 LINE 官方帳號 QR Code，掃描加入好友" class="w-20 md:w-24" loading="lazy">
+                    <a href="#TODO-請填入實際LINE官方帳號連結"
+                       target="_blank" rel="noopener noreferrer"
+                       class="text-xs text-brand-text/60 hover:text-brand-gold transition-colors underline underline-offset-2"
+                       aria-label="開啟煦煦木白 LINE 官方帳號">LINE 加入好友</a>
+                </div>
+
+                <!-- Facebook（待客戶提供粉專連結） -->
+                <a href="#TODO-請填入實際Facebook粉專網址"
+                    target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all"
+                    aria-label="前往煦煦木白 Facebook 粉絲專頁">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/xuxumu.bai/"
+                    target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all"
+                    aria-label="前往煦煦木白 Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- 版權宣告 -->
+            <div class="border-t border-gray-200 pt-8 text-xs font-sans font-light tracking-wider text-brand-text/50">
+                <p>&copy; 2026 xuxumubai. All Rights Reserved.</p>
+            </div>
+        </div>
+        </div>
+
     </footer>
 
-    <!-- 初始化腳本 -->
+    <!-- JavaScript for Navbar Scroll Effect & Carousel -->
     <script>
+        const navbar = document.getElementById('navbar');
+        const navLinks = navbar.querySelectorAll('a, button');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // 往下滾動時：白底、深色字、加陰影
+                navbar.classList.remove('text-white', 'border-transparent');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'text-brand-text', 'border-gray-100', 'shadow-sm');
+            } else {
+                // 在頂部時：透明底、白色字
+                navbar.classList.add('text-white', 'border-transparent');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'text-brand-text', 'border-gray-100', 'shadow-sm');
+            }
+        });
         // 初始化 AOS
         AOS.init({
             duration: 1000,
@@ -596,7 +826,6 @@
         });
 
         // 導航欄捲動效果
-        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -609,9 +838,20 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const href = this.getAttribute('href');
+                
+                // 如果是回首頁 (#)，則滾動到頂部
+                if (href === '#' || href === '') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
                 // 關閉手機選單
                 document.getElementById('menuToggle').classList.remove('active');
                 document.getElementById('mobileDropdown').classList.remove('active');
@@ -621,31 +861,122 @@
         // 手機選單切換
         const menuToggle = document.getElementById('menuToggle');
         const mobileDropdown = document.getElementById('mobileDropdown');
+        let hideTimeout;
 
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileDropdown.classList.toggle('active');
+            const isActive = menuToggle.classList.toggle('active');
+            // 切換選單顯示/隱藏
+            mobileDropdown.classList.toggle('active', isActive);
+            // 同步更新 aria-expanded
+            menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            menuToggle.setAttribute('aria-label', isActive ? '關閉導覽選單' : '開啟導覽選單');
+
+            // 清除之前的計時器
+            if (hideTimeout) clearTimeout(hideTimeout);
         });
 
-        // 首頁影片背景控制
+        // 滑鼠離開時延遲隱藏（桌面版）
+        mobileDropdown.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                mobileDropdown.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', '開啟導覽選單');
+            }, 500); // 0.5秒延遲
+        });
+
+        // 點擊選單外部區域關閉選單
+        document.addEventListener('click', (e) => {
+            if (!mobileDropdown.contains(e.target) &&
+                !menuToggle.contains(e.target) &&
+                mobileDropdown.classList.contains('active')) {
+                mobileDropdown.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', '開啟導覽選單');
+            }
+        });
+
+        // ── Hero 顯示邏輯 ──────────────────────────────────────────
+        // 核心原則：導覽列與文字內容「載入即顯示」，不依賴影片播放完成。
+        // 影片為視覺加分項，播放失敗或被瀏覽器阻擋時，poster 圖直接頂上。
+
         const heroVideo = document.getElementById('heroVideo');
-        const heroContent = document.getElementById('heroContent');
-        const heroBgImage = document.getElementById('heroBgImage');
+        const heroBgimage = document.getElementById('heroBgimage');
+
+        // 顯示 Hero 文字與導覽列的統一函式
+        function revealHeroContent() {
+            navbar.style.opacity = '1';
+
+            const herotextrange = document.getElementById('herotext-range');
+            if (herotextrange) {
+                herotextrange.style.opacity = '1';
+                herotextrange.style.transform = 'translateX(0)';
+            }
+
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) {
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateX(0)';
+            }
+
+            setTimeout(() => {
+                const heroSubtitle = document.getElementById('heroSubtitle');
+                if (heroSubtitle) {
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateX(0)';
+                }
+            }, 500);
+        }
+
+        // Fallback timer：最多等 1.5 秒，不管影片如何都顯示導覽與文字
+        const heroFallbackTimer = setTimeout(revealHeroContent, 1500);
 
         if (heroVideo) {
+            // 確保影片不循環播放
+            heroVideo.removeAttribute('loop');
+
+            // 影片播放成功後立即顯示內容（不再等播完）
+            heroVideo.addEventListener('play', () => {
+                clearTimeout(heroFallbackTimer);
+                revealHeroContent();
+            });
+
+            // 影片播放被阻擋（autoplay policy）時立即 fallback
+            heroVideo.addEventListener('loadeddata', () => {
+                const playPromise = heroVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // 自動播放被阻擋：顯示 poster 並顯示內容
+                        clearTimeout(heroFallbackTimer);
+                        heroBgimage.style.opacity = '1';
+                        revealHeroContent();
+                    });
+                }
+            });
+
+            // 影片播放完畢：切換到靜態背景圖
             heroVideo.addEventListener('ended', () => {
                 heroVideo.style.opacity = '0';
                 setTimeout(() => {
                     heroVideo.pause();
-                    heroBgImage.style.opacity = '1';
-                    heroContent.style.opacity = '1';
+                    heroVideo.currentTime = 0;
+                    heroBgimage.style.opacity = '1';
                 }, 1000);
             });
 
-            heroVideo.addEventListener('loadeddata', () => {
-                heroVideo.play().catch(() => { });
+            // 影片載入錯誤時 fallback
+            heroVideo.addEventListener('error', () => {
+                clearTimeout(heroFallbackTimer);
+                heroBgimage.style.opacity = '1';
+                revealHeroContent();
             });
+        } else {
+            // 沒有影片元素時直接顯示
+            clearTimeout(heroFallbackTimer);
+            revealHeroContent();
         }
+
     </script>
 </body>
 
