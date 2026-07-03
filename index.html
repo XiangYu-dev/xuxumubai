@@ -7,12 +7,12 @@
 
     <title>煦煦木白 | 新精緻甜品</title>
 
-    <!-- 引入 Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS（本地化，由 Tailwind CLI standalone 產出） -->
+    <link rel="stylesheet" href="resource/css/tailwind.min.css">
 
-    <!-- 引入 AOS 動畫庫 -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS 動畫庫（本地化，v2.3.1） -->
+    <link href="resource/vendor/aos/aos.css" rel="stylesheet">
+    <script src="resource/vendor/aos/aos.js"></script>
 
     <!-- 引入 Google Fonts: 標題用襯線體，內文用無襯線體 -->
     <link
@@ -26,30 +26,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Custom Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            bg: '#F9F8F6',      // 暖米白背景
-                            text: '#333333',    // 深炭灰文字
-                            accent: '#B0B7B0',  // 淡鼠尾草綠點綴
-                            gold: '#A38B71',    // 優雅棕金 (參考圖中的文字色調)
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', '"Noto Sans TC"', 'sans-serif'],
-                        serif: ['"Playfair Display"', '"Noto Serif TC"', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind 自訂色票與字體已遷移至 tailwind.config.js，由 CLI 編譯進 resource/css/tailwind.min.css -->
 
     <style>
         :root {
@@ -303,6 +280,7 @@
         <div id="mobileDropdown" class="mobile-dropdown">
             <a href="#brand-story" class="text-black hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
             <a href="#portfolio" class="text-black hover:text-[var(--accent-red)] transition-colors">精選甜品</a>
+            <a href="#ingredients" class="text-black hover:text-[var(--accent-red)] transition-colors">嚴選食材</a>
             <a href="#contact" class="text-black hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
             
         </div>
@@ -350,7 +328,7 @@
         class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
         <!-- 背景圖片 -->
         <div class="absolute inset-0">
-            <img src="resource/image/info/入會禮券圖.png" alt="品牌故事" class="w-full h-full">
+            <img src="resource/image/info/入會禮券圖.png" alt="品牌故事" class="w-full h-full" loading="lazy">
         </div>
 
         <!-- 暗化遮罩 -->
@@ -360,7 +338,7 @@
         <div class="relative z-10 text-white px-6 max-w-3xl">
             <span class="font-sans text-sm tracking-[0.3em] uppercase mb-4 block opacity-80">Brand Story</span>
             <p class="font-serif text-xl md:text-2xl tracking-wider leading-relaxed">
-                （品牌故事文字，待補上約 50-60 字）
+                煦煦，是晨光初暖；木白，是質樸本真。我們取四時鮮物入饌，以慢火細熬時光，讓每一碗甜品都盛著自然的溫柔。願這份純粹的甘甜，成為你日常裡最柔軟的片刻。
             </p>
         </div>
     </section>
@@ -371,7 +349,7 @@
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
             <div class="cat_img relative group h-[50vh] md:h-[70vh] md:order-1">
                 <img src="resource/image/others/nourishing.png" alt="糖水"
-                    class="w-full h-full object-cover rounded-[10%] transition-transform duration-700 group-hover:scale-105">
+                    class="w-full h-full object-cover rounded-[10%] transition-transform duration-700 group-hover:scale-105" loading="lazy">
             </div>
         </div>
         <div class="mt-16 md:mt-24"></div>
@@ -381,17 +359,16 @@
             <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-2 md:w-1/2 w-[80%] mx-auto md:ml-auto">
                 <div class="w-full h-full flex items-center justify-center">
                     <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
-                            src="resource/image/brand/brandimage5.PNG" class="rounded-[10%]"></span>
+                            src="resource/image/brand/brandimage5.PNG" class="rounded-[10%]" loading="lazy"></span>
                 </div>
             </div>
 
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-1">
 
                 <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料介紹,
-                    圖再換成飲品圖)</h2>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">夏日限定・鮮果慢釀</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)</p>
+                    <p>精選當令酪梨與紅芭樂，以低溫慢釀鎖住果香，不添贅飾，只留一口清爽回甘，是屬於盛夏的輕盈滋味。</p>
                 </div>
             </div>
         </div>
@@ -402,17 +379,16 @@
             <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-1 md:w-1/2 w-[80%] mx-auto md:ml-auto">
                 <div class="w-full h-full flex items-center justify-center">
                     <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
-                            src="resource/image/brand/brandimage5.PNG" class="rounded-[10%]"></span>
+                            src="resource/image/brand/brandimage5.PNG" class="rounded-[10%]" loading="lazy"></span>
                 </div>
             </div>
 
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-2">
 
                 <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">(文字, 這區塊可以放主打飲料介紹,
-                    圖再換成飲品圖)</h2>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">四時鮮飲・入口生津</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
-                    <p>(酪梨、紅芭樂xxx 飲料介紹文字)</p>
+                    <p>順應時令採摘，以鮮果本味調飲，層層果韻在唇齒間舒展，為忙碌的日子斟上一份自然的清涼與甘美。</p>
                 </div>
             </div>
 
@@ -438,88 +414,84 @@
                 <!-- 圖片 1 -->
                 <div class="group cursor-pointer">
                     <div class="img-gradient-border aspect-[3/4]">
-                        <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             桂花紅豆沙</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字: 紅豆綿密、陳皮清香，暖心又順口)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">紅豆綿密軟糯，佐以桂花與陳皮，暖心順口，一勺暖到心底</p>
                     </div>
                 </div>
 
                 <!-- 圖片 2 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
                     <div class="img-gradient-border aspect-[4/5]">
-                        <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             銀耳蓮子羹</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex:銀耳、紅棗、枸杞，最純粹的溫柔滋)
-                        </p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">銀耳滑潤、蓮子清香，紅棗枸杞相佐，最純粹的溫柔滋養</p>
                     </div>
                 </div>
 
                 <!-- 圖片 3 -->
                 <div class="group cursor-pointer">
                     <div class="img-gradient-border aspect-[3/4]">
-                        <img src="resource/image/prd/prd_fullmarks.png" alt="滿分" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/prd/prd_fullmarks.png" alt="滿分"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             滿分</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">介紹文字, ex: 經典配料的圓滿組合，一碗就滿足)
-                        </p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">經典配料圓滿相聚，層次豐盈，一碗即是恰到好處的滿足</p>
                     </div>
                 </div>
 
                 <!-- 圖片 4 -->
                 <div class="group cursor-pointer">
                     <div class="img-gradient-border aspect-[4/5]">
-                        <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             地瓜豆類拼盤</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字, ex: 地瓜的柔滑口感，一口就是幸福)
-                        </p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">綿滑地瓜與時令豆類同盛，質樸香甜，一口便是踏實的幸福</p>
                     </div>
                 </div>
 
                 <!-- 圖片 5 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
                     <div class="img-gradient-border aspect-[3/4]">
-                        <img src="resource/image/prd/prd_adlay.png" alt="薏仁燕麥" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/prd/prd_adlay.png" alt="薏仁燕麥"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             薏仁燕麥</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: 薏仁與燕麥的完美結合，營養又健康)
-                        </p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">薏仁與燕麥細火同熬，清潤不膩，營養與美味兼得</p>
                     </div>
                 </div>
 
                 <!-- 圖片 6 -->
                 <div class="group cursor-pointer">
                     <div class="img-gradient-border aspect-[4/5]">
-                        <img src="resource/image/prd/prd_dumpling.png" alt="湯圓" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/prd/prd_dumpling.png" alt="湯圓"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             湯圓</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">手作圓潤湯圓，外Q內軟，甜在心頭，圓滿每一刻團聚</p>
                     </div>
                 </div>
 
@@ -528,7 +500,7 @@
     </section>
 
     <!-- Section5 原料 -->
-    <section id="portfolio" class="py-24">
+    <section id="ingredients" class="py-24">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
             <div class="text-center">
                 <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">嚴選食材</h2>
@@ -541,84 +513,84 @@
                 <!-- 圖片 1 -->
                 <div class="group cursor-pointer">
                     <div class="aspect-[3/4]">
-                        <img src="resource/image/material/material_lotusroot-rb.webp" alt="蓮藕" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/material/material_lotusroot-rb.webp" alt="蓮藕"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             蓮藕</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字: Ex: 蓮藕清甜爽脆，營養豐富)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">清甜爽脆，粉糯回甘，蘊藏土地的溫潤養分</p>
                     </div>
                 </div>
 
                 <!-- 圖片 2 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
                     <div class="aspect-[4/5]">
-                        <img src="resource/image/material/material_lotusseeds.webp" alt="蓮子"  
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/material/material_lotusseeds.webp" alt="蓮子"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             蓮子</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: 蓮子xxx)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">顆顆飽滿清香，入口綿密，靜養身心的自然之選</p>
                     </div>
                 </div>
 
                 <!-- 圖片 3 -->
                 <div class="group cursor-pointer">
                     <div class="aspect-[3/4]">
-                        <img src="resource/image/material/material_yam.webp" alt="地瓜"  
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/material/material_yam.webp" alt="地瓜"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             地瓜</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字: xxxx)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">柔滑鬆軟、天然回甜，樸實中藏著飽滿的暖意</p>
                     </div>
                 </div>
 
                 <!-- 圖片 4 -->
                 <div class="group cursor-pointer">
                     <div class="aspect-[4/5]">
-                        <img src="resource/image/material/material_avocado.png" alt="酪梨"  
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/material/material_avocado.png" alt="酪梨"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             酪梨</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字, ex: 酪梨oooo)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">綿密滑順、油潤生香，是果實裡最溫柔的豐盈</p>
                     </div>
                 </div>
 
                 <!-- 圖片 5 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
                     <div class="aspect-[3/4]">
-                        <img src="resource/image/material/material_potato.webp" alt="地瓜豆"  
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/material/material_potato.webp" alt="地瓜豆"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             地瓜豆</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字 ex: qqqqqqq)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">小巧圓潤、口感細緻，粒粒是田間細心揀選的鮮甜</p>
                     </div>
                 </div>
 
                 <!-- 圖片 6 -->
                 <div class="group cursor-pointer">
                     <div class="aspect-[4/5]">
-                        <img src="resource/image/material/material_purplerice.webp" alt="紫米" 
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="resource/image/material/material_purplerice.webp" alt="紫米"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
                     <div class="mt-4 text-center">
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             紫米</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">(介紹文字)</p>
+                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">色澤深潤、米香醇厚，慢煮成一碗溫熱的樸實滋味</p>
                     </div>
                 </div>
             </div>
@@ -647,7 +619,7 @@
 
             <!-- 社群圖示 -->
             <div class="flex justify-center items-center gap-10 mb-10">
-                <img src="resource/image/info/LineQRCode.png" alt="Line QRCode" class="w-20 md:w-24">
+                <img src="resource/image/info/LineQRCode.png" alt="Line QRCode" class="w-20 md:w-24" loading="lazy">
 
                 <a href=""
                     class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
