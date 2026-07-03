@@ -5,7 +5,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>煦煦木白 | 新精緻甜品</title>
+    <title>煦煦木白 | 東方甜品・台北信義・板橋</title>
+
+    <!-- SEO 基本 meta -->
+    <meta name="description" content="煦煦木白——取法四時鮮物，以慢火細熬時光。東方甜品・糖水專門店，台北信義區、板橋門市，週一至週日 11:30–20:30。">
+    <meta name="keywords" content="東方甜品,糖水,台北甜品,信義甜品,板橋甜品,紅豆沙,銀耳蓮子,煦煦木白">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xuxumubai.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xuxumubai.com/">
+    <meta property="og:title" content="煦煦木白 | 東方甜品・台北信義・板橋">
+    <meta property="og:description" content="取法四時鮮物，以慢火細熬時光。煦煦木白東方甜品，台北信義區、板橋門市。">
+    <meta property="og:image" content="https://xuxumubai.com/resource/image/brand/brandimage.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="煦煦木白">
+    <meta property="og:locale" content="zh_TW">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="煦煦木白 | 東方甜品・台北信義・板橋">
+    <meta name="twitter:description" content="取法四時鮮物，以慢火細熬時光。煦煦木白東方甜品，台北信義區、板橋門市。">
+    <meta name="twitter:image" content="https://xuxumubai.com/resource/image/brand/brandimage.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resource/image/info/Logo.png">
+    <link rel="apple-touch-icon" href="resource/image/info/Logo.png">
+
+    <!-- JSON-LD 結構化資料：LocalBusiness（甜品店） -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "煦煦木白",
+      "alternateName": "xuxumubai",
+      "description": "取法四時鮮物，以慢火細熬時光。東方甜品・糖水專門店。",
+      "url": "https://xuxumubai.com/",
+      "image": "https://xuxumubai.com/resource/image/brand/brandimage.png",
+      "logo": "https://xuxumubai.com/resource/image/info/Logo.png",
+      "sameAs": [
+        "https://www.instagram.com/xuxumu.bai/"
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "煦煦木白 台北總店",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "松仁路36號1樓",
+            "addressLocality": "信義區",
+            "addressRegion": "台北市",
+            "addressCountry": "TW"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "11:30",
+              "closes": "20:30"
+            }
+          ]
+        },
+        {
+          "@type": "Place",
+          "name": "煦煦木白 板橋分店",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "板橋車站",
+            "addressLocality": "板橋區",
+            "addressRegion": "新北市",
+            "addressCountry": "TW"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "11:30",
+              "closes": "20:30"
+            }
+          ]
+        }
+      ],
+      "servesCuisine": "東方甜品・糖水",
+      "priceRange": "$$"
+    }
+    </script>
 
     <!-- Tailwind CSS（本地化，由 Tailwind CLI standalone 產出） -->
     <link rel="stylesheet" href="resource/css/tailwind.min.css">
@@ -184,21 +270,27 @@
             transform: translateY(-9px) rotate(-45deg);
         }
 
-        /* 手機/桌面下拉選單樣式 */
+        /* 手機/桌面下拉選單樣式（方案 A：卡片式下拉面板 + 毛玻璃 + 圓角 + 輕柔棕金陰影） */
         .mobile-dropdown {
             position: absolute;
             right: 0;
             top: 100%;
-            width: 256px;
-            background: #FFDAC8;
-            border: 1px solid #E5E5E5;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            width: min(72vw, 300px);
+            /* 毛玻璃半透明暖米白底；不支援 backdrop-filter 時退回不透明暖米白 */
+            background: #F9F8F6;
+            background: rgba(249,248,246,.85);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(163,139,113,.2);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(163,139,113,.15);
             z-index: 100;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            gap: 0;
+            padding: 20px 0;
             font-size: 18px;
             /* 初始隱藏狀態 */
             transform: translateX(100%);
@@ -206,36 +298,47 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        /* 手機版 */
+        /* 連結項目：加大點擊區塊（觸控友善 ≥44px），極淡分隔線區隔 */
+        .mobile-dropdown a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px 24px;
+            border-bottom: 1px solid rgba(163,139,113,.08);
+        }
+        .mobile-dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        /* 手機版：維持 min(72vw,300px) 自適應寬度 */
         @media (max-width: 767px) {
             .mobile-dropdown {
-                width: 256px;
+                width: min(72vw, 300px);
             }
         }
 
-        /* 桌面版：下拉選單樣式 */
-        @media (min-width: 768px) {
-            .mobile-dropdown {
-                width: 200px;
-                transform: translateY(10px);
-            }
-        }
-
-        /* 桌面版：下拉選單樣式 */
+        /* 桌面版：下拉選單樣式——定位/動畫方向保持 translateY，只更新視覺屬性 */
         @media (min-width: 768px) {
             .mobile-dropdown {
                 position: absolute;
                 top: 100%;
                 right: 0;
-                width: 200px;
+                width: 220px;
                 height: auto;
-                background: #FFDAC8;
-                border: 1px solid #E5E5E5;
+                background: #F9F8F6;
+                background: rgba(249,248,246,.85);
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(163,139,113,.2);
+                border-radius: 16px;
                 transform: translateY(10px);
                 opacity: 0;
                 visibility: hidden;
                 transition: transform 0.3s ease, opacity 0.3s ease;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                box-shadow: 0 8px 30px rgba(163,139,113,.15);
+                padding: 16px 0;
+                gap: 0;
             }
         }
 
@@ -257,6 +360,27 @@
         .mobile-dropdown:not(.active) {
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
+
+        /* prefers-reduced-motion：尊重使用者系統動效偏好 */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            /* Hero 影片靜止：直接顯示 poster 圖 */
+            #heroVideo {
+                display: none;
+            }
+
+            #heroBgimage {
+                opacity: 1 !important;
+            }
+        }
     </style>
 </head>
 
@@ -268,21 +392,23 @@
     <!-- 懸浮式導航欄 -->
     <nav id="navbar"
         class="fixed w-full z-50 transition-all duration-500 px-8 py-8 flex justify-between items-center opacity-0">
-        <img src="resource/image/info/Logo.png" alt="煦煦木白" class="h-12 md:h-16">
+        <img src="resource/image/info/Logo.png" alt="煦煦木白 品牌標誌" class="h-12 md:h-16">
         <div class="md:relative">
-            <div class="mobile-menu-btn" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="mobile-menu-btn" id="menuToggle"
+                aria-label="開啟導覽選單"
+                aria-expanded="false"
+                aria-controls="mobileDropdown">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
         <!-- 手機版/桌面版下拉選單 -->
         <div id="mobileDropdown" class="mobile-dropdown">
-            <a href="#brand-story" class="text-black hover:text-[var(--accent-red)] transition-colors">品牌故事</a>
-            <a href="#portfolio" class="text-black hover:text-[var(--accent-red)] transition-colors">精選甜品</a>
-            <a href="#ingredients" class="text-black hover:text-[var(--accent-red)] transition-colors">嚴選食材</a>
-            <a href="#contact" class="text-black hover:text-[var(--accent-red)] transition-colors">門店資訊</a>
-            
+            <a href="#brand-story" class="text-black hover:text-brand-gold transition-colors">品牌故事</a>
+            <a href="#portfolio" class="text-black hover:text-brand-gold transition-colors">精選甜品</a>
+            <a href="#ingredients" class="text-black hover:text-brand-gold transition-colors">嚴選食材</a>
+            <a href="#contact" class="text-black hover:text-brand-gold transition-colors">門店資訊</a>
         </div>
     </nav>
 
@@ -290,7 +416,8 @@
     <header class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
         <!-- 背景影片 -->
         <video id='heroVideo' class='absolute inset-0 w-full h-full object-cover transition-opacity duration-1000'
-            style='opacity: 1' autoplay muted playsinline>
+            style='opacity: 1' autoplay muted playsinline
+            poster='resource/image/brand/brandimage.png'>
             <source src='resource/video/lakedemo.mp4' type='video/mp4'>
         </video>
 
@@ -299,7 +426,7 @@
 
         <!-- 背景圖片（影片停格後顯示） -->
         <div class='absolute inset-0 z-0 transition-opacity duration-1000' id='heroBgimage' style='opacity: 0'>
-            <img src='resource/image/brand/brandimage.png' class='w-full h-full object-cover' alt='hero-bg'>
+            <img src='resource/image/brand/brandimage.png' class='w-full h-full object-cover' alt='煦煦木白東方甜品形象圖'>
         </div>
 
 
@@ -328,7 +455,7 @@
         class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
         <!-- 背景圖片 -->
         <div class="absolute inset-0">
-            <img src="resource/image/info/入會禮券圖.png" alt="品牌故事" class="w-full h-full" loading="lazy">
+            <img src="resource/image/info/入會禮券圖.png" alt="煦煦木白品牌故事背景——入會禮券" class="w-full h-full object-cover" loading="lazy">
         </div>
 
         <!-- 暗化遮罩 -->
@@ -358,8 +485,8 @@
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
             <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-2 md:w-1/2 w-[80%] mx-auto md:ml-auto">
                 <div class="w-full h-full flex items-center justify-center">
-                    <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
-                            src="resource/image/brand/brandimage5.PNG" class="rounded-[10%]" loading="lazy"></span>
+                    <img src="resource/image/brand/brandimage3.PNG" class="rounded-[10%] w-full h-full object-cover"
+                        alt="夏日限定・鮮果慢釀甜品" loading="lazy">
                 </div>
             </div>
 
@@ -378,14 +505,14 @@
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
             <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-1 md:w-1/2 w-[80%] mx-auto md:ml-auto">
                 <div class="w-full h-full flex items-center justify-center">
-                    <span class="text-brand-accent/40 font-serif text-lg tracking-widest"><img
-                            src="resource/image/brand/brandimage5.PNG" class="rounded-[10%]" loading="lazy"></span>
+                    <img src="resource/image/brand/brandimage4.PNG" class="rounded-[10%] w-full h-full object-cover"
+                        alt="四時鮮飲・入口生津甜品" loading="lazy">
                 </div>
             </div>
 
             <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-2">
 
-                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">夏日系列</span>
+                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">四時系列</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">四時鮮飲・入口生津</h2>
                 <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
                     <p>順應時令採摘，以鮮果本味調飲，層層果韻在唇齒間舒展，為忙碌的日子斟上一份自然的清涼與甘美。</p>
@@ -608,8 +735,22 @@
                 <div class="text-center">
                     <h4 class="font-serif text-xl mb-8">門店資訊</h4>
                     <ul class="space-y-4 text-sm opacity-80 font-light">
-                        <li> 台北總店: 台北市信義區松仁路36號1樓 週一至週日 11:30 - 20:30</li>
-                        <li> 板橋分店: 新北市板橋區板橋車站 週一至週日 11:30 - 20:30</li>
+                        <li>
+                            台北總店：
+                            <a href="https://maps.google.com/?q=台北市信義區松仁路36號1樓"
+                               target="_blank" rel="noopener noreferrer"
+                               class="underline underline-offset-2 hover:text-brand-gold transition-colors"
+                               aria-label="在 Google 地圖查看台北總店位置">台北市信義區松仁路36號1樓</a>
+                            <br>週一至週日 11:30 - 20:30
+                        </li>
+                        <li>
+                            板橋分店：
+                            <a href="https://maps.google.com/?q=新北市板橋區板橋車站"
+                               target="_blank" rel="noopener noreferrer"
+                               class="underline underline-offset-2 hover:text-brand-gold transition-colors"
+                               aria-label="在 Google 地圖查看板橋分店位置">新北市板橋區板橋車站</a>
+                            <br>週一至週日 11:30 - 20:30
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -619,18 +760,32 @@
 
             <!-- 社群圖示 -->
             <div class="flex justify-center items-center gap-10 mb-10">
-                <img src="resource/image/info/LineQRCode.png" alt="Line QRCode" class="w-20 md:w-24" loading="lazy">
+                <!-- LINE：QR Code（桌機掃描用）+ 可點擊連結（手機用） -->
+                <div class="flex flex-col items-center gap-2">
+                    <img src="resource/image/info/LineQRCode.png" alt="煦煦木白 LINE 官方帳號 QR Code，掃描加入好友" class="w-20 md:w-24" loading="lazy">
+                    <a href="#TODO-請填入實際LINE官方帳號連結"
+                       target="_blank" rel="noopener noreferrer"
+                       class="text-xs text-brand-text/60 hover:text-brand-gold transition-colors underline underline-offset-2"
+                       aria-label="開啟煦煦木白 LINE 官方帳號">LINE 加入好友</a>
+                </div>
 
-                <a href=""
-                    class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <!-- Facebook（待客戶提供粉專連結） -->
+                <a href="#TODO-請填入實際Facebook粉專網址"
+                    target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all"
+                    aria-label="前往煦煦木白 Facebook 粉絲專頁">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path
                             d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                 </a>
+
+                <!-- Instagram -->
                 <a href="https://www.instagram.com/xuxumu.bai/"
-                    class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    target="_blank" rel="noopener noreferrer"
+                    class="w-14 h-14 rounded-full border border-brand-text/20 flex items-center justify-center text-brand-text/60 hover:border-brand-gold hover:text-brand-gold transition-all"
+                    aria-label="前往煦煦木白 Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path
                             d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
@@ -709,10 +864,13 @@
         let hideTimeout;
 
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
+            const isActive = menuToggle.classList.toggle('active');
             // 切換選單顯示/隱藏
-            mobileDropdown.classList.toggle('active');
-            
+            mobileDropdown.classList.toggle('active', isActive);
+            // 同步更新 aria-expanded
+            menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            menuToggle.setAttribute('aria-label', isActive ? '關閉導覽選單' : '開啟導覽選單');
+
             // 清除之前的計時器
             if (hideTimeout) clearTimeout(hideTimeout);
         });
@@ -722,62 +880,101 @@
             hideTimeout = setTimeout(() => {
                 mobileDropdown.classList.remove('active');
                 menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', '開啟導覽選單');
             }, 500); // 0.5秒延遲
         });
 
         // 點擊選單外部區域關閉選單
         document.addEventListener('click', (e) => {
-            if (!mobileDropdown.contains(e.target) && 
-                !menuToggle.contains(e.target) && 
+            if (!mobileDropdown.contains(e.target) &&
+                !menuToggle.contains(e.target) &&
                 mobileDropdown.classList.contains('active')) {
                 mobileDropdown.classList.remove('active');
                 menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', '開啟導覽選單');
             }
         });
 
-        // 首頁影片背景控制
+        // ── Hero 顯示邏輯 ──────────────────────────────────────────
+        // 核心原則：導覽列與文字內容「載入即顯示」，不依賴影片播放完成。
+        // 影片為視覺加分項，播放失敗或被瀏覽器阻擋時，poster 圖直接頂上。
+
         const heroVideo = document.getElementById('heroVideo');
-        const heroContent = document.getElementById('heroContent');
         const heroBgimage = document.getElementById('heroBgimage');
+
+        // 顯示 Hero 文字與導覽列的統一函式
+        function revealHeroContent() {
+            navbar.style.opacity = '1';
+
+            const herotextrange = document.getElementById('herotext-range');
+            if (herotextrange) {
+                herotextrange.style.opacity = '1';
+                herotextrange.style.transform = 'translateX(0)';
+            }
+
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) {
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateX(0)';
+            }
+
+            setTimeout(() => {
+                const heroSubtitle = document.getElementById('heroSubtitle');
+                if (heroSubtitle) {
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateX(0)';
+                }
+            }, 500);
+        }
+
+        // Fallback timer：最多等 1.5 秒，不管影片如何都顯示導覽與文字
+        const heroFallbackTimer = setTimeout(revealHeroContent, 1500);
 
         if (heroVideo) {
             // 確保影片不循環播放
             heroVideo.removeAttribute('loop');
 
-            heroVideo.addEventListener('ended', () => {
-                // 影片淡出
-                heroVideo.style.opacity = '0';
+            // 影片播放成功後立即顯示內容（不再等播完）
+            heroVideo.addEventListener('play', () => {
+                clearTimeout(heroFallbackTimer);
+                revealHeroContent();
+            });
 
-                // 1秒後停止影片並顯示背景圖片和導航欄
+            // 影片播放被阻擋（autoplay policy）時立即 fallback
+            heroVideo.addEventListener('loadeddata', () => {
+                const playPromise = heroVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // 自動播放被阻擋：顯示 poster 並顯示內容
+                        clearTimeout(heroFallbackTimer);
+                        heroBgimage.style.opacity = '1';
+                        revealHeroContent();
+                    });
+                }
+            });
+
+            // 影片播放完畢：切換到靜態背景圖
+            heroVideo.addEventListener('ended', () => {
+                heroVideo.style.opacity = '0';
                 setTimeout(() => {
                     heroVideo.pause();
                     heroVideo.currentTime = 0;
                     heroBgimage.style.opacity = '1';
-                    // 顯示導航欄
-                    navbar.style.opacity = '1';
-
-
-                    const herotextrange = document.getElementById('herotext-range');
-                    herotextrange.style.opacity = '1';
-                    herotextrange.style.transform = 'translateX(0)';
-
-                    // 顯示標題（從左滑入）
-                    const heroTitle = document.getElementById('heroTitle');
-                    heroTitle.style.opacity = '1';
-                    heroTitle.style.transform = 'translateX(0)';
-
-                    // 延遲500ms後顯示副標題
-                    setTimeout(() => {
-                        const heroSubtitle = document.getElementById('heroSubtitle');
-                        heroSubtitle.style.opacity = '1';
-                        heroSubtitle.style.transform = 'translateX(0)';
-                    }, 500);
                 }, 1000);
             });
 
-            heroVideo.addEventListener('loadeddata', () => {
-                heroVideo.play().catch(() => { });
+            // 影片載入錯誤時 fallback
+            heroVideo.addEventListener('error', () => {
+                clearTimeout(heroFallbackTimer);
+                heroBgimage.style.opacity = '1';
+                revealHeroContent();
             });
+        } else {
+            // 沒有影片元素時直接顯示
+            clearTimeout(heroFallbackTimer);
+            revealHeroContent();
         }
 
     </script>
