@@ -1,0 +1,5 @@
+resource/prime
+
+# Tailwind CLI standalone 執行檔（建置工具，非網站執行所需，體積大且為平台專屬二進位檔）
+# tailwind.config.js 與 tailwind-input.css 為小型設定檔，保留追蹤以利日後重新編譯 resource/css/tailwind.min.css
+tailwindcss.exe
