@@ -116,20 +116,25 @@
 
     <style>
         :root {
-            --bg-color: #F9F7F2;
-            --bg-gradient: linear-gradient(135deg, #F5F0E8 0%, #D8D0C4 100%);
+            --bg-color: #FBF6EE;
+            --bg-gradient: linear-gradient(180deg,#FDF3E2 0%,#FCE4CA 100%);
             --text-main: #333333;
             --accent-red: #A62121;
-            --accent-gold: #FFB380;
+            --accent-gold: #84624A;
         }
 
         .fixed-bg {
             position: fixed;
             inset: 0;
             z-index: -1;
-            background: 
+            background:
                 url('resource/image/background/wave.svg') repeat center center,
-                linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
+                linear-gradient(180deg,
+                    #FDF3E2 0%,
+                    #FCECD7 45%,
+                    #FCE4CA 72%,
+                    #FCD8B6 100%
+                );
             background-size: cover;
             pointer-events: none;
         }
@@ -145,7 +150,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #F9F8F6;
+            background: #FBF7F0;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -154,7 +159,7 @@
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #A38B71;
+            background: #84624A;
         }
 
         /* 圖片容器防溢出設定 */
@@ -162,21 +167,7 @@
             overflow: hidden;
             border-radius: 8px;
             position: relative;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-        }
-
-        /* 漸層邊框效果 */
-        .img-gradient-border {
-            position: relative;
-            overflow: hidden;
-            padding: 12px;
-            background: linear-gradient(135deg, #FFF9F2 0%, #FFB380 100%);
-            border-radius: 16px;
-        }
-
-        .img-gradient-border img {
-            border-radius: 8px;
-            display: block;
+            border: 1px solid rgba(132,98,74,.25);
         }
 
         .img-container::after {
@@ -277,13 +268,13 @@
             top: 100%;
             width: min(72vw, 300px);
             /* 毛玻璃半透明暖米白底；不支援 backdrop-filter 時退回不透明暖米白 */
-            background: #F9F8F6;
-            background: rgba(249,248,246,.85);
+            background: #FBF7F0;
+            background: rgba(251,247,240,.85);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(163,139,113,.2);
+            border: 1px solid rgba(132,98,74,.18);
             border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(163,139,113,.15);
+            box-shadow: 0 8px 30px rgba(132,98,74,.15);
             z-index: 100;
             display: flex;
             flex-direction: column;
@@ -305,7 +296,7 @@
             justify-content: center;
             width: 100%;
             padding: 12px 24px;
-            border-bottom: 1px solid rgba(163,139,113,.08);
+            border-bottom: 1px solid rgba(132,98,74,.08);
         }
         .mobile-dropdown a:last-child {
             border-bottom: none;
@@ -326,17 +317,17 @@
                 right: 0;
                 width: 220px;
                 height: auto;
-                background: #F9F8F6;
-                background: rgba(249,248,246,.85);
+                background: #FBF7F0;
+                background: rgba(251,247,240,.85);
                 -webkit-backdrop-filter: blur(10px);
                 backdrop-filter: blur(10px);
-                border: 1px solid rgba(163,139,113,.2);
+                border: 1px solid rgba(132,98,74,.18);
                 border-radius: 16px;
                 transform: translateY(10px);
                 opacity: 0;
                 visibility: hidden;
                 transition: transform 0.3s ease, opacity 0.3s ease;
-                box-shadow: 0 8px 30px rgba(163,139,113,.15);
+                box-shadow: 0 8px 30px rgba(132,98,74,.15);
                 padding: 16px 0;
                 gap: 0;
             }
@@ -381,6 +372,50 @@
                 opacity: 1 !important;
             }
         }
+
+        /* 菜單 Lightbox */
+        #menuLightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0, 0, 0, .8);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        #menuLightbox.active {
+            display: flex;
+        }
+
+        #menuLightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        #menuLightboxClose {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .3);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        #menuLightboxClose:hover {
+            background: rgba(255, 255, 255, .25);
+        }
     </style>
 </head>
 
@@ -407,6 +442,7 @@
         <div id="mobileDropdown" class="mobile-dropdown">
             <a href="#brand-story" class="text-black hover:text-brand-gold transition-colors">品牌故事</a>
             <a href="#portfolio" class="text-black hover:text-brand-gold transition-colors">精選甜品</a>
+            <a href="#menu" class="text-black hover:text-brand-gold transition-colors">菜單</a>
             <a href="#ingredients" class="text-black hover:text-brand-gold transition-colors">嚴選食材</a>
             <a href="#contact" class="text-black hover:text-brand-gold transition-colors">門店資訊</a>
         </div>
@@ -455,7 +491,7 @@
         class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center overflow-hidden">
         <!-- 背景圖片 -->
         <div class="absolute inset-0">
-            <img src="resource/image/info/入會禮券圖.png" alt="煦煦木白品牌故事背景——入會禮券" class="w-full h-full object-cover" loading="lazy">
+            <img src="resource/image/brand/banner_dessert-overview.webp" alt="煦煦木白甜品米白桌面俯拍全景，呈現四時東方甜品的詩意布局" class="w-full h-full object-cover" loading="lazy">
         </div>
 
         <!-- 暗化遮罩 -->
@@ -474,9 +510,20 @@
     <section id="about" class="py-24 md:py-32 px-6 md:px-16 max-w-7xl mx-auto">
         <!-- 區塊 1 -->
         <div class="category flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <div class="cat_img relative group h-[50vh] md:h-[70vh] md:order-1">
-                <img src="resource/image/others/nourishing.png" alt="糖水"
-                    class="w-full h-full object-cover rounded-[10%] transition-transform duration-700 group-hover:scale-105" loading="lazy">
+            <div class="cat_img relative group h-[40vh] md:h-[70vh] md:order-1 md:w-1/2 w-[80%] mx-auto md:ml-auto">
+                <div class="w-full h-full flex items-center justify-center">
+                    <img src="resource/image/others/nourishing.png" alt="煦煦木白東方糖水碗盛——自然食材與四時滋養的意象"
+                        class="rounded-[10%] w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                </div>
+            </div>
+
+            <div class="cat_text flex flex-col justify-center py-8 md:py-0 md:order-2">
+                <span class="text-brand-accent font-sans text-sm tracking-[0.3em] uppercase mb-2">NOURISHING</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-wider mb-6">一碗糖水，四時滋養</h2>
+                <div class="font-serif text-brand-text/80 space-y-5 leading-loose tracking-wide font-light">
+                    <!-- 以下文案為暫定草稿，待客戶／文案確認後更新 -->
+                    <p>煦煦木白始於一個樸素的心願——讓每一碗糖水都盛著節氣的溫度。我們順應四時採選食材，以慢火細熬，不搶戲、不繁複，只把自然本味留在碗裡，成為你日常裡最溫柔的那一口。</p>
+                </div>
             </div>
         </div>
         <div class="mt-16 md:mt-24"></div>
@@ -540,7 +587,7 @@
 
                 <!-- 圖片 1 -->
                 <div class="group cursor-pointer">
-                    <div class="img-gradient-border aspect-[3/4]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/prd/prd_redbeansoup.png" alt="紅豆沙"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -548,13 +595,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             桂花紅豆沙</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">紅豆綿密軟糯，佐以桂花與陳皮，暖心順口，一勺暖到心底</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">紅豆綿密軟糯，佐以桂花與陳皮，暖心順口，一勺暖到心底</p>
                     </div>
                 </div>
 
                 <!-- 圖片 2 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="img-gradient-border aspect-[4/5]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/prd/prd_fungus.png" alt="銀耳蓮子羹"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -562,13 +609,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             銀耳蓮子羹</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">銀耳滑潤、蓮子清香，紅棗枸杞相佐，最純粹的溫柔滋養</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">銀耳滑潤、蓮子清香，紅棗枸杞相佐，最純粹的溫柔滋養</p>
                     </div>
                 </div>
 
                 <!-- 圖片 3 -->
                 <div class="group cursor-pointer">
-                    <div class="img-gradient-border aspect-[3/4]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/prd/prd_fullmarks.png" alt="滿分"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -576,13 +623,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             滿分</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">經典配料圓滿相聚，層次豐盈，一碗即是恰到好處的滿足</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">經典配料圓滿相聚，層次豐盈，一碗即是恰到好處的滿足</p>
                     </div>
                 </div>
 
                 <!-- 圖片 4 -->
                 <div class="group cursor-pointer">
-                    <div class="img-gradient-border aspect-[4/5]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/prd/prd_fullmarks2.png" alt="地瓜豆類拼盤"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -590,13 +637,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             地瓜豆類拼盤</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">綿滑地瓜與時令豆類同盛，質樸香甜，一口便是踏實的幸福</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">綿滑地瓜與時令豆類同盛，質樸香甜，一口便是踏實的幸福</p>
                     </div>
                 </div>
 
                 <!-- 圖片 5 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="img-gradient-border aspect-[3/4]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/prd/prd_adlay.png" alt="薏仁燕麥"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -604,13 +651,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             薏仁燕麥</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">薏仁與燕麥細火同熬，清潤不膩，營養與美味兼得</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">薏仁與燕麥細火同熬，清潤不膩，營養與美味兼得</p>
                     </div>
                 </div>
 
                 <!-- 圖片 6 -->
                 <div class="group cursor-pointer">
-                    <div class="img-gradient-border aspect-[4/5]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/prd/prd_dumpling.png" alt="湯圓"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -618,7 +665,7 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             湯圓</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">手作圓潤湯圓，外Q內軟，甜在心頭，圓滿每一刻團聚</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">手作圓潤湯圓，外Q內軟，甜在心頭，圓滿每一刻團聚</p>
                     </div>
                 </div>
 
@@ -639,7 +686,7 @@
 
                 <!-- 圖片 1 -->
                 <div class="group cursor-pointer">
-                    <div class="aspect-[3/4]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/material/material_lotusroot-rb.webp" alt="蓮藕"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -647,13 +694,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             蓮藕</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">清甜爽脆，粉糯回甘，蘊藏土地的溫潤養分</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">清甜爽脆，粉糯回甘，蘊藏土地的溫潤養分</p>
                     </div>
                 </div>
 
                 <!-- 圖片 2 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="aspect-[4/5]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/material/material_lotusseeds.webp" alt="蓮子"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -661,13 +708,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             蓮子</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">顆顆飽滿清香，入口綿密，靜養身心的自然之選</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">顆顆飽滿清香，入口綿密，靜養身心的自然之選</p>
                     </div>
                 </div>
 
                 <!-- 圖片 3 -->
                 <div class="group cursor-pointer">
-                    <div class="aspect-[3/4]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/material/material_yam.webp" alt="地瓜"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -675,13 +722,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             地瓜</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">柔滑鬆軟、天然回甜，樸實中藏著飽滿的暖意</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">柔滑鬆軟、天然回甜，樸實中藏著飽滿的暖意</p>
                     </div>
                 </div>
 
                 <!-- 圖片 4 -->
                 <div class="group cursor-pointer">
-                    <div class="aspect-[4/5]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/material/material_avocado.png" alt="酪梨"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -689,13 +736,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             酪梨</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">綿密滑順、油潤生香，是果實裡最溫柔的豐盈</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">綿密滑順、油潤生香，是果實裡最溫柔的豐盈</p>
                     </div>
                 </div>
 
                 <!-- 圖片 5 (錯落位移) -->
                 <div class="group cursor-pointer md:mt-16">
-                    <div class="aspect-[3/4]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/material/material_potato.webp" alt="地瓜豆"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -703,13 +750,13 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             地瓜豆</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">小巧圓潤、口感細緻，粒粒是田間細心揀選的鮮甜</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">小巧圓潤、口感細緻，粒粒是田間細心揀選的鮮甜</p>
                     </div>
                 </div>
 
                 <!-- 圖片 6 -->
                 <div class="group cursor-pointer">
-                    <div class="aspect-[4/5]">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.12)] transition-shadow">
                         <img src="resource/image/material/material_purplerice.webp" alt="紫米"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                     </div>
@@ -717,12 +764,43 @@
                         <h3
                             class="font-serif text-lg tracking-wider text-brand-text group-hover:text-brand-gold transition-colors">
                             紫米</h3>
-                        <p class="text-xs tracking-widest text-brand-text/50 mt-1 uppercase">色澤深潤、米香醇厚，慢煮成一碗溫熱的樸實滋味</p>
+                        <p class="text-sm tracking-wide leading-relaxed text-brand-text/60 mt-1">色澤深潤、米香醇厚，慢煮成一碗溫熱的樸實滋味</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Section: 當季菜單 -->
+    <section id="menu" class="py-24">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">當季菜單</h2>
+                <p class="font-sans text-sm tracking-wide text-brand-text/60">季節限定・每月更新</p>
+            </div>
+            <img src="resource/image/info/summer_manu.png"
+                alt="煦煦木白夏日當季菜單，列有各式東方甜品品項與價格，季節限定每月更新"
+                class="w-full rounded-2xl border border-[rgba(132,98,74,.22)]"
+                loading="lazy">
+            <div class="text-center mt-10">
+                <button id="openMenuLightbox"
+                    class="border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white rounded-full px-8 py-3 transition-colors font-sans tracking-wider"
+                    aria-label="放大查看完整當季菜單圖片">
+                    查看完整菜單
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 菜單 Lightbox（純 CSS/JS，不依賴外部套件） -->
+    <div id="menuLightbox" role="dialog" aria-modal="true" aria-label="菜單放大檢視">
+        <button id="menuLightboxClose" aria-label="關閉菜單放大檢視">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 4L16 16M16 4L4 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <img src="resource/image/info/summer_manu.png" alt="煦煦木白夏日當季菜單完整版">
+    </div>
 
     <!-- Footer / Contact (聯絡資訊) -->
     <footer id="contact" class="bg-brand-bg pt-20 pb-12 border-t border-gray-200">
@@ -976,6 +1054,41 @@
             clearTimeout(heroFallbackTimer);
             revealHeroContent();
         }
+
+        // ── 菜單 Lightbox ───────────────────────────────────────────
+        const menuLightbox = document.getElementById('menuLightbox');
+        const openMenuLightboxBtn = document.getElementById('openMenuLightbox');
+        const menuLightboxClose = document.getElementById('menuLightboxClose');
+
+        function openMenuLightboxFn() {
+            menuLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            menuLightboxClose.focus();
+        }
+
+        function closeMenuLightboxFn() {
+            menuLightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            if (openMenuLightboxBtn) openMenuLightboxBtn.focus();
+        }
+
+        if (openMenuLightboxBtn && menuLightbox && menuLightboxClose) {
+            openMenuLightboxBtn.addEventListener('click', openMenuLightboxFn);
+
+            menuLightboxClose.addEventListener('click', closeMenuLightboxFn);
+
+            // 點擊遮罩（非圖片區域）關閉
+            menuLightbox.addEventListener('click', (e) => {
+                if (e.target === menuLightbox) closeMenuLightboxFn();
+            });
+        }
+
+        // ESC 鍵關閉 lightbox
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuLightbox && menuLightbox.classList.contains('active')) {
+                closeMenuLightboxFn();
+            }
+        });
 
     </script>
 </body>
