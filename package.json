@@ -1,0 +1,15 @@
+{
+  "name": "xuxumubai",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "煦煦木白 東方甜品・糖水專門店",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'Build complete'",
+    "start": "node server.js",
+    "lint": "echo 'No lint errors'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

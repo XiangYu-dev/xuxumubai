@@ -86,6 +86,25 @@
               "closes": "20:30"
             }
           ]
+        },
+        {
+          "@type": "Place",
+          "name": "煦煦木白 臺大醫院店",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "中山南路7號（東址）",
+            "addressLocality": "中正區",
+            "addressRegion": "台北市",
+            "addressCountry": "TW"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "11:30",
+              "closes": "20:30"
+            }
+          ]
         }
       ],
       "servesCuisine": "東方甜品・糖水",
@@ -778,16 +797,20 @@
                 <h2 class="font-serif text-3xl md:text-4xl text-brand-gold tracking-[0.15em] mb-4">當季菜單</h2>
                 <p class="font-sans text-sm tracking-wide text-brand-text/60">季節限定・每月更新</p>
             </div>
-            <img src="resource/image/info/summer_manu.png"
-                alt="煦煦木白夏日當季菜單，列有各式東方甜品品項與價格，季節限定每月更新"
-                class="w-full rounded-2xl border border-[rgba(132,98,74,.22)]"
-                loading="lazy">
-            <div class="text-center mt-10">
-                <button id="openMenuLightbox"
-                    class="border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white rounded-full px-8 py-3 transition-colors font-sans tracking-wider"
-                    aria-label="放大查看完整當季菜單圖片">
-                    查看完整菜單
-                </button>
+            <div class="relative group cursor-pointer overflow-hidden rounded-2xl border border-[rgba(132,98,74,.22)] hover:shadow-[0_8px_24px_rgba(132,98,74,.15)] transition-all">
+                <img id="menuImage"
+                    src="resource/image/info/summer_manu.png"
+                    alt="煦煦木白夏日當季菜單，點擊可放大查看完整菜單"
+                    class="w-full block transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                    role="button"
+                    tabindex="0"
+                    aria-label="點擊放大查看當季菜單">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-xs px-4 py-2 rounded-full tracking-wider backdrop-blur-xs">
+                        點擊放大檢視
+                    </span>
+                </div>
             </div>
         </div>
     </section>
@@ -827,6 +850,14 @@
                                target="_blank" rel="noopener noreferrer"
                                class="underline underline-offset-2 hover:text-brand-gold transition-colors"
                                aria-label="在 Google 地圖查看板橋分店位置">新北市板橋區板橋車站</a>
+                            <br>週一至週日 11:30 - 20:30
+                        </li>
+                        <li>
+                            臺大醫院店：
+                            <a href="https://maps.google.com/?q=台北市中正區中山南路7號"
+                               target="_blank" rel="noopener noreferrer"
+                               class="underline underline-offset-2 hover:text-brand-gold transition-colors"
+                               aria-label="在 Google 地圖查看臺大醫院店位置">台北市中正區中山南路7號（東址）</a>
                             <br>週一至週日 11:30 - 20:30
                         </li>
                     </ul>
@@ -1057,7 +1088,7 @@
 
         // ── 菜單 Lightbox ───────────────────────────────────────────
         const menuLightbox = document.getElementById('menuLightbox');
-        const openMenuLightboxBtn = document.getElementById('openMenuLightbox');
+        const menuImage = document.getElementById('menuImage');
         const menuLightboxClose = document.getElementById('menuLightboxClose');
 
         function openMenuLightboxFn() {
@@ -1069,11 +1100,19 @@
         function closeMenuLightboxFn() {
             menuLightbox.classList.remove('active');
             document.body.style.overflow = '';
-            if (openMenuLightboxBtn) openMenuLightboxBtn.focus();
+            if (menuImage) menuImage.focus();
         }
 
-        if (openMenuLightboxBtn && menuLightbox && menuLightboxClose) {
-            openMenuLightboxBtn.addEventListener('click', openMenuLightboxFn);
+        if (menuLightbox && menuLightboxClose) {
+            if (menuImage) {
+                menuImage.addEventListener('click', openMenuLightboxFn);
+                menuImage.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openMenuLightboxFn();
+                    }
+                });
+            }
 
             menuLightboxClose.addEventListener('click', closeMenuLightboxFn);
 

@@ -1,0 +1,8 @@
+{
+  "name": "煦煦木白",
+  "description": "取法四時鮮物，以慢火細熬時光。東方甜品・糖水專門店，台北信義區、板橋、臺大醫院門市。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
