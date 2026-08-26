@@ -1,9 +1,0 @@
-你 → 00_inbox/需求.md
-         ↓ Planner 讀取
-01_plans/plan_*.md（含 checkbox 任務清單）
-         ↓ Generator 讀取 + 逐步勾選 checkbox
-02_implementations/impl_*.md（含測試指令）
-         ↓ Evaluator 讀取兩份文件對照
-03_evaluations/eval_*_v1.md（通過 or 退回）
-         ↓ 若退回，Generator 修正後重提
-03_evaluations/eval_*_v2.md（最終通過）
